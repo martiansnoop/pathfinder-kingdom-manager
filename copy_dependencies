@@ -1,0 +1,14 @@
+#!/bin/bash
+
+bower install
+mkdir ./app/css/vendor
+mkdir ./app/js/vendor
+cp -R ./bower_components/bootstrap/dist/css/bootstrap.css ./app/css/vendor/
+cp -R ./bower_components/bootstrap/dist/css/bootstrap-theme.css ./app/css/vendor/
+
+cp -R ./bower_components/jquery/jquery.js ./app/js/vendor/
+cp -R ./bower_components/ractive/build/Ractive.js ./app/js/vendor/
+cp -R ./bower_components/requirejs/require.js ./app/js/vendor/
+cp -R ./bower_components/requirejs-text/text.js ./app/js/vendor/
+cp -R ./bower_components/underscore/underscore.js ./app/js/vendor/
+
