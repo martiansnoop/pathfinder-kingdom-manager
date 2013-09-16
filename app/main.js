@@ -17,7 +17,8 @@ require.config({
   }
 });
 
-define(["jquery", "underscore", "./js/checkCalculator", "./js/stubbedKingdomSpec"], function($, _, calc, stubbedData){
+define(["jquery", "underscore", "ractive", "./js/checkCalculator", "./js/stubbedKingdomSpec", "text!./js/checkTemplate"],
+function($, _, Ractive, calc, stubbedData, checkTemplate){
 
   //TODO: find out why strict mode complains when I make these constants
   var economy = "economy";
@@ -25,7 +26,17 @@ define(["jquery", "underscore", "./js/checkCalculator", "./js/stubbedKingdomSpec
   var loyalty = "loyalty";
 
   var calculateCheck = calc(stubbedData);
-  var economyModifier = calculateCheck(economy);
+  var economyData = calculateCheck(economy);
+
+
+  var ui = new Ractive({
+    el: 'placeForStuff',
+    template: checkTemplate,
+    data: {
+      modifier: economyData.modifier,
+      sources: economyData.sources
+    }
+  });
 
   var breakpoint = false;
 });
