@@ -35,7 +35,9 @@ function($, _, Ractive, calc, stubbedData, template){
     template: template,
     data: {
       checks: [economyData, loyaltyData, stabilityData],
-      leaders: stubbedData.modifierSources.leaders
+      leaders: stubbedData.modifierSources.leaders,
+      edicts: stubbedData.modifierSources.edicts,
+      buildings: stubbedData.modifierSources.buildings
     }
   });
 

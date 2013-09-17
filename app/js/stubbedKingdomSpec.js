@@ -51,7 +51,7 @@ define({
       ],
       buildings: [
         {
-          type: "really good building",
+          name: "really good building",
           modifiers: {
             economy: 2,
             stability: 2,

@@ -13,6 +13,23 @@
   </ul>
 </div>
 
+<div id="edicts">
+  Edicts
+  <ul>
+    {{#edicts}}
+    <li>{{>namedThingWithEditableModifiers}}</li>
+    {{/edicts}}
+  </ul>
+</div>
+
+<div id="buildings">
+  Buildings
+  <ul>
+    {{#buildings}}
+    <li>{{>namedThingWithEditableModifiers}}</li>
+    {{/buildings}}
+  </ul>
+</div>
 
 <!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
 
@@ -50,3 +67,10 @@
   {{#consumption != undefined}} Consumption: <input type="text" value="{{consumption}}" on-change="onChange">{{/consumption}}
 <!-- {{/editableModifier}} -->
 
+<!-- {{>namedThingWithEditableModifiers}} -->
+
+  {{name}}:{{#modifiers}}
+             {{>editableModifier}}
+           {{/modifiers}}
+
+<!-- {{/namedThingWithEditableModifiers}} -->
