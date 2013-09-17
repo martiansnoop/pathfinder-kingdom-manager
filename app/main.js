@@ -30,16 +30,12 @@ function($, _, Ractive, calc, stubbedData, template){
   var loyaltyData = calculateCheck(loyalty);
   var stabilityData = calculateCheck(stability);
 
-
   var ui = new Ractive({
     el: 'placeForStuff',
     template: template,
-//    partials: {check: checkTemplate},
     data: {
       checks: [economyData, loyaltyData, stabilityData],
       leaders: stubbedData.modifierSources.leaders
     }
   });
-
-  var breakpoint = false;
 });
