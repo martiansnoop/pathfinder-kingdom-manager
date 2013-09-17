@@ -35,6 +35,7 @@ define(["jquery", "underscore"], function($, _) {
       var totalModifier = _.chain(modifiers).pluck("modifier").reduce(sum, 0).value();
 
       return {
+        name: checkName,
         sources: modifiers,
         modifier: totalModifier
       }
