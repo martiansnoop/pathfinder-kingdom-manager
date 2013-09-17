@@ -1,11 +1,48 @@
-<div>Total check: {{ modifier }}</div>
+<div id="calculatedChecks">
+  {{#checks:i}}
+  {{>check}}
+  {{/checks}}
+</div>
 
-<div>
+<div id="leadershipRoles">
+  Leaders
   <ul>
-    {{#sources}}
-    <li>
-      {{from}}: {{modifier}}
-    </li>
-    {{/sources}}
+    {{#leaders}}
+    <li>{{>leadershipRole}}</li>
+    {{/leaders}}
   </ul>
 </div>
+
+<!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
+
+<!-- {{>check}} -->
+
+<div id="{{ name }}Check">
+  <div>{{name}}: {{ modifier }}</div>
+
+  <div>
+    <ul>
+      {{#sources}}
+      <li>
+        {{from}}: {{modifier}}
+      </li>
+      {{/sources}}
+    </ul>
+  </div>
+
+</div>
+
+<!-- {{/check}} -->
+
+
+<!-- {{>leadershipRole}} -->
+
+<!-- NOTE: the mustache will not render if the modifier is null, so this is a cheap trick to not know
+           the modifier provided by the leader. I may instead wish to put a "name" property on the modifier obj.
+           Also, these checks can technically be negative, and slots can be unfilled. -->
+{{role}}: {{name}}, {{"+" + modifiers.stability + " stability"}}
+{{"+" + modifiers.economy + " economy"}}
+{{"+" + modifiers.loyalty + " loyalty"}}
+
+
+<!-- {{/leadershipRole}} -->
