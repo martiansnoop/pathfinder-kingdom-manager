@@ -30,7 +30,8 @@ define({
           name: "Renault Surtova", //for display purposes
           modifiers: {
             economy: 4
-          }
+          },
+          modifierReassignable: true
         },
         {
           role: "Councilor",

@@ -38,4 +38,12 @@ function($, _, Ractive, calc, stubbedData, template){
       leaders: stubbedData.modifierSources.leaders
     }
   });
+
+
+  ui.on({
+    onChange: function(event) {
+      //TODO: find out how to recalculate only the necessary checks
+      ui.set("checks", [calculateCheck(economy), calculateCheck(loyalty), calculateCheck(stability)]);
+    }
+  })
 });
