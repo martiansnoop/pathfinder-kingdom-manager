@@ -1,6 +1,6 @@
 <div id="calculatedChecks">
   {{#checks:i}}
-  {{>check}}
+    {{>check}}
   {{/checks}}
 </div>
 
@@ -13,13 +13,12 @@
   </ul>
 </div>
 
+
 <!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
 
 <!-- {{>check}} -->
-
 <div id="{{ name }}Check">
   <div>{{name}}: {{ modifier }}</div>
-
   <div>
     <ul>
       {{#sources}}
@@ -29,27 +28,25 @@
       {{/sources}}
     </ul>
   </div>
-
 </div>
-
 <!-- {{/check}} -->
 
 
 <!-- {{>leadershipRole}} -->
-
-<!-- NOTE: the mustache will not render if the modifier is null, so this is a cheap trick to not know
-           the modifier provided by the leader. I may instead wish to put a "name" property on the modifier obj.
-           Also, these checks can technically be negative, and slots can be unfilled. -->
-{{role}}: <input type="text" value="{{name}}">, {{"+" + modifiers.stability + " stability"}}
-{{"+" + modifiers.economy + " economy"}}
-{{"+" + modifiers.loyalty + " loyalty"}}
-
-  <!-- This is another way. I think structuring the data better might be the way I want to solve this.-->
-  {{#modifiers}}
-    {{#stability != undefined}}<input type="text" value="{{stability}}" on-change="onChange">{{/stability}}
-    {{#economy  != undefined}}<input type="text" value="{{economy}}" on-change="onChange">{{/economy}}
-    {{#loyalty  != undefined}}<input type="text" value="{{loyalty}}" on-change="onChange">{{/loyalty}}
-  {{/modifiers}}
-
-
+{{role}}: <input type="text" value="{{name}}">, {{#modifiers}}
+                                                  {{>editableModifier}}
+                                                {{/modifiers}}
 <!-- {{/leadershipRole}} -->
+
+
+<!-- {{>editableModifier}} -->
+<!-- NOTE: the mustache will not render if the modifier is undefined, so this is a cheap trick to not know
+         the modifier provided by the thing. I may instead wish to put a "name" property on the modifier obj.
+         Also, these checks can technically be negative, and slots can be unfilled. -->
+
+  {{#stability != undefined}}Stability: <input type="text" value="{{stability}}" on-change="onChange">{{/stability}}
+  {{#economy  != undefined}}Economy: <input type="text" value="{{economy}}" on-change="onChange">{{/economy}}
+  {{#loyalty  != undefined}}Loyalty: <input type="text" value="{{loyalty}}" on-change="onChange">{{/loyalty}}
+  {{#consumption != undefined}} Consumption: <input type="text" value="{{consumption}}" on-change="onChange">{{/consumption}}
+<!-- {{/editableModifier}} -->
+
