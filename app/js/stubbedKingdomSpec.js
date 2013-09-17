@@ -15,26 +15,33 @@ define({
             economy: 1,
             loyalty: -1
           }
+        },
+        {
+          name: "Festivals per year",
+          modifiers: {
+            loyalty: 2,
+            consumption: 2
+          }
         }
       ],
       leaders: [
         {
           role: "Ruler",
-          name: "name here", //for display purposes
+          name: "Renault Surtova", //for display purposes
           modifiers: {
             economy: 4
           }
         },
         {
           role: "Councilor",
-          name: "can't spell it",
+          name: "Eldrich Root",
           modifiers: {
             loyalty: 3
           }
         },
         {
           role: "Warden",
-          name: "hick with russian name",
+          name: "Kolinsky Sable",
           modifiers: {
             stability: 4
           }
