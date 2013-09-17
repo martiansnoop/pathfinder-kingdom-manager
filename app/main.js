@@ -17,7 +17,7 @@ require.config({
   }
 });
 
-define(["jquery", "underscore", "ractive", "./js/checkCalculator", "./js/stubbedKingdomSpec", "text!./js/template"],
+define(["jquery", "underscore", "ractive", "./js/checkCalculator", "./js/data/stubbedKingdomSpec", "text!./js/template"],
 function($, _, Ractive, calc, stubbedData, template){
 
   //TODO: find out why strict mode complains when I make these constants
