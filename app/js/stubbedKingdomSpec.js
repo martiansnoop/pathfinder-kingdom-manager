@@ -59,6 +59,15 @@ define({
             unrestWhenBuilt: -2
           }
         }
+      ],
+      unrest: [ //TODO: make calculator less brittle
+        {
+          modifiers: {
+            economy: -1,
+            stability: -1,
+            loyalty: -1
+          }
+        }
       ]
     }
 });
