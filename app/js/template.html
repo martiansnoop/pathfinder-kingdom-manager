@@ -4,32 +4,35 @@
   {{/checks}}
 </div>
 
-<div id="leadershipRoles">
-  Leaders
-  <ul>
-    {{#leaders}}
-    <li>{{>leadershipRole}}</li>
-    {{/leaders}}
-  </ul>
-</div>
+{{#modifierSources}}
+  <div id="leadershipRoles">
+    Leaders
+    <ul>
+      {{#leaders}}
+      <li>{{>leadershipRole}}</li>
+      {{/leaders}}
+    </ul>
+  </div>
 
-<div id="edicts">
-  Edicts
-  <ul>
-    {{#edicts}}
-    <li>{{>namedThingWithEditableModifiers}}</li>
-    {{/edicts}}
-  </ul>
-</div>
+  <div id="edicts">
+    Edicts
+    <ul>
+      {{#edicts}}
+      <li>{{>namedThingWithEditableModifiers}}</li>
+      {{/edicts}}
+    </ul>
+  </div>
 
-<div id="buildings">
-  Buildings
-  <ul>
-    {{#buildings}}
-    <li>{{>namedThingWithEditableModifiers}}</li>
-    {{/buildings}}
-  </ul>
-</div>
+  <div id="buildings">
+    Buildings
+    <ul>
+      {{#buildings}}
+      <li>{{>namedThingWithEditableModifiers}}</li>
+      {{/buildings}}
+    </ul>
+  </div>
+{{/modifierSources}}
+
 
 <!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
 
