@@ -1,6 +1,17 @@
 define({
   modifierSources:
     {
+//      edicts2: {
+//        holidays: {
+//
+//        },
+//        taxation: {
+//
+//        },
+//        promotion: {
+//
+//        }
+//      },
       edicts: [
         {
           name: "Promotion Level",

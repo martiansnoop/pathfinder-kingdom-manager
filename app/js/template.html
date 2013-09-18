@@ -33,6 +33,18 @@
   </div>
 {{/modifierSources}}
 
+  {{#edicts}}
+      Holidays: <select value="{{selectedHoliday}}">
+                  {{#holidays}}
+                    <option value="{{.}}">{{label}}</option>
+                  {{/holidays}}
+                </select>
+{{#selectedHoliday}}
+  {{label}}
+{{/selectedHoliday}}
+
+  {{/edicts}}
+
 
 <!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
 

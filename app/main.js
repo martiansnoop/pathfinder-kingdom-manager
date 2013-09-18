@@ -32,7 +32,9 @@ function($, _, Ractive, calcFactory, data, template){
     template: template,
     data: {
       checks: [calculate(economy), calculate(loyalty), calculate(stability)],
-      modifierSources: data.modifiables
+      modifierSources: data.modifiables,
+      edicts: data.edicts,
+      selectedHoliday: data.edicts.holidays[2]
     }
   });
 
