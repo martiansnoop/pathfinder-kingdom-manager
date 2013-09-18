@@ -25,14 +25,14 @@ function($, _, Ractive, calcFactory, data, template){
   var stability = "stability";
   var loyalty = "loyalty";
 
-  var calculate = calcFactory(data.modifiables);
+  var calculate = calcFactory(data.editables);
 
   var ui = new Ractive({
     el: 'placeForStuff',
     template: template,
     data: {
       checks: [calculate(economy), calculate(loyalty), calculate(stability)],
-      modifierSources: data.modifiables,
+      editables: data.editables,
       edicts: data.edicts,
       selectedHoliday: data.edicts.holidays[2]
     }

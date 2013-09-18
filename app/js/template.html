@@ -4,7 +4,7 @@
   {{/checks}}
 </div>
 
-{{#modifierSources}}
+{{#editables}}
   <div id="leadershipRoles">
     Leaders
     <ul>
@@ -31,18 +31,15 @@
       {{/buildings}}
     </ul>
   </div>
-{{/modifierSources}}
+{{/editables}}
 
   {{#edicts}}
-      Holidays: <select value="{{selectedHoliday}}">
+  <!--TODO: fix underlying data so I don't have to bind to a specific array index-->
+      Holidays: <select value="{{editables.edicts[2]}}">
                   {{#holidays}}
                     <option value="{{.}}">{{label}}</option>
                   {{/holidays}}
                 </select>
-{{#selectedHoliday}}
-  {{label}}
-{{/selectedHoliday}}
-
   {{/edicts}}
 
 

@@ -1,6 +1,6 @@
-define(["./stubbedKingdomSpec", "./edicts"], function(modifiers, allEdicts){
+define(["./stubbedKingdomSpec", "./edicts"], function(stubbedData, allEdicts){
   return {
     edicts: allEdicts,
-    modifiables: modifiers.modifierSources
+    editables: stubbedData.modifierSources
   }
 });
