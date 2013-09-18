@@ -27,16 +27,19 @@ define(["jquery", "underscore"], function($, _) {
     return modifiers;
   }
 
-  return function calculateCheck(checkName, modifiables) {
+  return function (modifiables){
+    return function calculateCheck(checkName) {
 
-    var modifiers = getModifiersForCheck(checkName, modifiables);
-    var totalModifier = _.chain(modifiers).pluck("modifier").reduce(sum, 0).value();
+      var modifiers = getModifiersForCheck(checkName, modifiables);
+      var totalModifier = _.chain(modifiers).pluck("modifier").reduce(sum, 0).value();
 
-    return {
-      name: checkName,
-      sources: modifiers,
-      modifier: totalModifier
+      return {
+        name: checkName,
+        sources: modifiers,
+        modifier: totalModifier
+      }
+
     }
-
   }
+
 });

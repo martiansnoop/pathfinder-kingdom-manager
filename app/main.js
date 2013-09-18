@@ -18,12 +18,14 @@ require.config({
 });
 
 define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "text!./js/template"],
-function($, _, Ractive, calculate, data, template){
+function($, _, Ractive, calcFactory, data, template){
 
   //TODO: find out why strict mode complains when I make these constants
   var economy = "economy";
   var stability = "stability";
   var loyalty = "loyalty";
+
+  var calculate = calcFactory(data.modifiables);
 
   var ui = new Ractive({
     el: 'placeForStuff',
