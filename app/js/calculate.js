@@ -7,8 +7,8 @@ define(["jquery", "underscore"], function($, _) {
   //Note - there's likely a more elegant (and more cryptic) way to write this.
   //There's probably also a more elegant and less cryptic way as well.
   //Also, this will be a pain in the ass to
-  function getModifiersForCheck(checkName, modifiables) {
-    var modifiers = _.chain(modifiables)
+  function getModifiersForCheck(checkName, editables) {
+    var modifiers = _.chain(editables)
       .map(function(source, sourceName){
         var modifier = _.chain(source)
           .pluck("modifiers")
@@ -27,10 +27,10 @@ define(["jquery", "underscore"], function($, _) {
     return modifiers;
   }
 
-  return function (modifiables){
+  return function (editables){
     return function calculateCheck(checkName) {
 
-      var modifiers = getModifiersForCheck(checkName, modifiables);
+      var modifiers = getModifiersForCheck(checkName, editables);
       var totalModifier = _.chain(modifiers).pluck("modifier").reduce(sum, 0).value();
 
       return {
