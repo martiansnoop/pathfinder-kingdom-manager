@@ -8,6 +8,7 @@ define(["jquery", "underscore"], function($, _) {
   //There's probably also a more elegant and less cryptic way as well.
   //Also, this will be a pain in the ass to
   function getModifiersForCheck(checkName, editables) {
+    editables.edicts2 = _.toArray(editables.edicts2); //HACK: come back and fix this once I have a better idea of exactly what this should do
     var modifiers = _.chain(editables)
       .map(function(source, sourceName){
         var modifier = _.chain(source)

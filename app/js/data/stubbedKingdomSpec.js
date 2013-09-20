@@ -1,29 +1,29 @@
 define({
   modifierSources:
     {
-//      edicts2: {
-//        holidays: {
-//          label: "6 per year",
-//          modifiers: {
-//            loyalty: 2,
-//            consumption: 2
-//          }
-//        },
-//        taxation: {
-//          label: "Light",
-//          modifiers: {
-//            economy: 1,
-//            loyalty: -1
-//          }
-//        },
-//        promotion: {
-//          label: "Token",
-//          modifiers: {
-//            stability: 1,
-//            consumption: 1
-//          }
-//        }
-//      },
+      edicts2: {
+        holidays: {
+          label: "6 per year",
+          modifiers: {
+            loyalty: 2,
+            consumption: 2
+          }
+        },
+        taxation: {
+          label: "Light",
+          modifiers: {
+            economy: 1,
+            loyalty: -1
+          }
+        },
+        promotion: {
+          label: "Token",
+          modifiers: {
+            stability: 1,
+            consumption: 1
+          }
+        }
+      },
       edicts: [
         {
           name: "Promotion Level",

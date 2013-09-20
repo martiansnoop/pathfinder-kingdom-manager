@@ -4,6 +4,44 @@
   {{/checks}}
 </div>
 
+
+
+{{#edicts}}
+  <!--TODO: fix underlying data so I don't have to bind to a specific array index-->
+  Holidays: <select value="{{selectedHoliday}}">
+              {{#holidays:i}}
+              <option value="{{.}}">{{label}}</option>
+              {{/holidays}}
+            </select>
+
+  {{#selectedHoliday}}
+    {{label}}
+  {{/selectedHoliday}}
+
+
+  Taxation: <select value="{{selectedTaxation}}">
+              {{#taxation:i}}
+                <option value="{{.}}">{{label}}</option>
+              {{/taxation}}
+            </select>
+
+            {{#selectedTaxation}}
+              {{label}}
+            {{/selectedTaxation}}
+
+  Promotion: <select value="{{selectedPtomotion}}">
+              {{#promotion:i}}
+                <option value="{{.}}">{{label}}</option>
+              {{/promotion}}
+            </select>
+
+            {{#selectedPtomotion}}
+              {{label}}
+            {{/selectedPtomotion}}
+
+
+{{/edicts}}
+
 {{#editables}}
   <div id="leadershipRoles">
     Leaders
@@ -33,14 +71,8 @@
   </div>
 {{/editables}}
 
-  {{#edicts}}
-  <!--TODO: fix underlying data so I don't have to bind to a specific array index-->
-      Holidays: <select value="{{editables.edicts[2]}}">
-                  {{#holidays}}
-                    <option value="{{.}}">{{label}}</option>
-                  {{/holidays}}
-                </select>
-  {{/edicts}}
+
+
 
 
 <!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
