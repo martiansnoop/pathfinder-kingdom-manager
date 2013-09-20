@@ -1,23 +1,51 @@
-<div id="calculatedChecks">
+<div id="calculatedChecks" class="row">
   {{#checks:i}}
-    {{>check}}
+    <div class="col-lg-2">
+      {{>check}}
+    </div>
   {{/checks}}
 </div>
+
+<!-- {{>check}} -->
+  <div class="panel panel-default">
+    <div class="panel-heading">{{name}}  <span class="badge pull-right">{{ modifier }}</span></div>
+    <div class="panel-body">
+      <ul>
+        {{#sources}}
+        <li>
+          {{from}}: {{modifier}}
+        </li>
+        {{/sources}}
+      </ul>
+    </div>
+  </div>
+<!-- {{/check}} -->
+
+
 
 
 
 {{#edicts}}
-  <!--TODO: fix underlying data so I don't have to bind to a specific array index-->
-  Holidays: <select value="{{selectedHoliday}}">
-              {{#holidays:i}}
-              <option value="{{.}}">{{label}}</option>
-              {{/holidays}}
-            </select>
+<div class="col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">Edicts</div>
 
-  {{#selectedHoliday}}
-    {{label}}
-  {{/selectedHoliday}}
+    <ul class="list-group">
 
+      <li class=list-group-item>
+        Holidays: <select value="{{selectedHoliday}}">
+        {{#holidays:i}}
+        <option value="{{.}}">{{label}}</option>
+        {{/holidays}}
+      </select>
+
+        {{#selectedHoliday}}
+        {{label}}
+        {{/selectedHoliday}}
+      </li>
+
+
+      <li class=list-group-item>
 
   Taxation: <select value="{{selectedTaxation}}">
               {{#taxation:i}}
@@ -28,47 +56,51 @@
             {{#selectedTaxation}}
               {{label}}
             {{/selectedTaxation}}
+      </li>
+      <li class=list-group-item>
 
-  Promotion: <select value="{{selectedPtomotion}}">
+
+      Promotion: <select value="{{selectedPromotion}}">
               {{#promotion:i}}
                 <option value="{{.}}">{{label}}</option>
               {{/promotion}}
             </select>
 
-            {{#selectedPtomotion}}
+            {{#selectedPromotion}}
               {{label}}
-            {{/selectedPtomotion}}
+            {{/selectedPromotion}}
+      </li>
+    </ul>
 
-
+  </div>
+</div>
 {{/edicts}}
 
 {{#editables}}
-  <div id="leadershipRoles">
-    Leaders
-    <ul>
-      {{#leaders}}
-      <li>{{>leadershipRole}}</li>
-      {{/leaders}}
-    </ul>
+
+  <div class="col-lg-6">
+    <div id="leadershipRoles" class="panel panel-default">
+      <div class="panel-heading">Leaders</div>
+      <ul class="list-group">
+        {{#leaders}}
+        <li class="list-group-item">{{>leadershipRole}}</li>
+        {{/leaders}}
+      </ul>
+    </div>
   </div>
 
-  <div id="edicts">
-    Edicts
-    <ul>
-      {{#edicts}}
-      <li>{{>namedThingWithEditableModifiers}}</li>
-      {{/edicts}}
-    </ul>
+
+  <div class="col-lg-8">
+    <div id="buildings"  class="panel panel-default">
+      <div class="panel-heading">Buildings</div>
+      <ul class="list-group">
+        {{#buildings}}
+        <li class="list-group-item">{{>namedThingWithEditableModifiers}}</li>
+        {{/buildings}}
+      </ul>
+    </div>
   </div>
 
-  <div id="buildings">
-    Buildings
-    <ul>
-      {{#buildings}}
-      <li>{{>namedThingWithEditableModifiers}}</li>
-      {{/buildings}}
-    </ul>
-  </div>
 {{/editables}}
 
 
@@ -77,20 +109,7 @@
 
 <!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
 
-<!-- {{>check}} -->
-<div id="{{ name }}Check">
-  <div>{{name}}: {{ modifier }}</div>
-  <div>
-    <ul>
-      {{#sources}}
-      <li>
-        {{from}}: {{modifier}}
-      </li>
-      {{/sources}}
-    </ul>
-  </div>
-</div>
-<!-- {{/check}} -->
+
 
 
 <!-- {{>leadershipRole}} -->
