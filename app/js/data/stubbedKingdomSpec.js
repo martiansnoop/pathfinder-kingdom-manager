@@ -83,6 +83,18 @@ define({
           }
         }
       ],
+      resources: [
+        {
+          name: "Gold mine",
+          modifiers: {
+            economy: 2
+          }
+        }
+      ],
+      events: [
+        {
+        }
+      ],
       unrest: [ //TODO: make calculator less brittle
         {
           modifiers: {
