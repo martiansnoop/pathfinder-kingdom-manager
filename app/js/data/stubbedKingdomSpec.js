@@ -24,29 +24,29 @@ define({
           }
         }
       },
-      edicts: [
-        {
-          name: "Promotion Level",
-          modifiers: {
-            stability: 2,
-            consumption: 2
-          }
-        },
-        {
-          name: "Taxation Level",
-          modifiers: {
-            economy: 1,
-            loyalty: -1
-          }
-        },
-        {
-          name: "Festivals per year",
-          modifiers: {
-            loyalty: 2,
-            consumption: 2
-          }
-        }
-      ],
+//      edicts: [
+//        {
+//          name: "Promotion Level",
+//          modifiers: {
+//            stability: 2,
+//            consumption: 2
+//          }
+//        },
+//        {
+//          name: "Taxation Level",
+//          modifiers: {
+//            economy: 1,
+//            loyalty: -1
+//          }
+//        },
+//        {
+//          name: "Festivals per year",
+//          modifiers: {
+//            loyalty: 2,
+//            consumption: 2
+//          }
+//        }
+//      ],
       leaders: [
         {
           role: "Ruler",
@@ -91,10 +91,10 @@ define({
           }
         }
       ],
-      events: [
-        {
-        }
-      ],
+//      events: [
+//        {
+//        }
+//      ],
       unrest: [ //TODO: make calculator less brittle
         {
           modifiers: {
@@ -103,6 +103,27 @@ define({
             loyalty: -1
           }
         }
-      ]
+      ],
+      stats: {
+          size: {
+            hexes: 6,
+            modifiers: {
+              consumption: 6
+            }
+          },
+          cities: {
+            amount: 1,
+            modifiers: {
+              consumption: 1
+            }
+          },
+          farms: {
+            amount: 4,
+            modifiers: {
+              consumption: -8
+            }
+          }
+      }
+
     }
 });

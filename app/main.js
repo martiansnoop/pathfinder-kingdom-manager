@@ -24,6 +24,7 @@ function($, _, Ractive, calcFactory, data, template){
   var economy = "economy";
   var stability = "stability";
   var loyalty = "loyalty";
+  var consumption = "consumption";
 
   var calculate = calcFactory(data.editables);
 
@@ -31,7 +32,7 @@ function($, _, Ractive, calcFactory, data, template){
     el: 'placeForStuff',
     template: template,
     data: {
-      checks: [calculate(economy), calculate(loyalty), calculate(stability)],
+      checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)],
       editables: data.editables,
       edicts: data.edicts,
       selectedHoliday: data.edicts.holidays[2]
