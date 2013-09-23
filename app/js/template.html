@@ -1,12 +1,11 @@
 <div id="calculatedChecks" class="row">
   {{#checks:i}}
-    <div class="col-lg-2">
       {{>check}}
-    </div>
   {{/checks}}
 </div>
 
 <!-- {{>check}} -->
+<div class="col-lg-2">
   <div class="panel panel-default">
     <div class="panel-heading">{{name}}  <span class="badge pull-right">{{ modifier }}</span></div>
     <div class="panel-body">
@@ -19,11 +18,8 @@
       </ul>
     </div>
   </div>
+</div>
 <!-- {{/check}} -->
-
-
-
-
 
 {{#edicts}}
 <div class="col-lg-4">
