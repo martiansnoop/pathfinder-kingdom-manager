@@ -1,28 +1,3 @@
-<div id="calculatedChecks" class="row">
-  {{#checks:i}}
-      {{>check}}
-  {{/checks}}
-</div>
-
-<!-- {{>check}} -->
-<div class="col-lg-2">
-  <div class="panel panel-default">
-    <div class="panel-heading">{{name}}  <span class="badge pull-right">{{ modifier }}</span></div>
-    <div class="panel-body">
-      <ul>
-        {{#sources}}
-        <li>
-          {{from}}: {{modifier}}
-        </li>
-        {{/sources}}
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- {{/check}} -->
-
-
-
 {{#editables}}
 
   <div class="col-lg-6">
