@@ -18,8 +18,8 @@ require.config({
 });
 
 //TODO: clean up imports and make main.js responsible for fewer than all the things
-define(["jquery", "underscore", "./js/calculate", "./js/data/namespace", "./js/component", "./js/templates/namespace"],
-function($, _, calcFactory, data, componentFactory, templates){
+define(["./js/calculate", "./js/data/namespace", "./js/component", "./js/templates/namespace"],
+function(calcFactory, data, componentFactory, templates){
 
   var buildingsData = {
     buildings: data.editables.buildings
