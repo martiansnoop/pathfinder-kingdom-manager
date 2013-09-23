@@ -18,25 +18,8 @@ require.config({
 });
 
 //TODO: clean up imports and make main.js responsible for fewer than all the things
-define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/namespace", "text!./js/template", "./js/component", "./js/templates/namespace"],
-function($, _, Ractive, calcFactory, data, template, componentFactory, templates){
-
-
-
-//  var ui = new Ractive({
-//    el: 'placeForStuff',
-//    template: template,
-//    data: {
-//      editables: data.editables
-//    }
-//  });
-
-//  ui.on({
-//    onChange: function(event) {
-//      //TODO: find out how to recalculate only the necessary checks
-//      ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability)]);
-//    }
-//  });
+define(["jquery", "underscore", "./js/calculate", "./js/data/namespace", "./js/component", "./js/templates/namespace"],
+function($, _, calcFactory, data, componentFactory, templates){
 
   var buildingsData = {
     buildings: data.editables.buildings
