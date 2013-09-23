@@ -18,7 +18,7 @@ require.config({
 });
 
 //TODO: clean up imports and make main.js responsible for fewer than all the things
-define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "text!./js/template", "./js/component", "./js/templates/namepace"],
+define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/namespace", "text!./js/template", "./js/component", "./js/templates/namepace"],
 function($, _, Ractive, calcFactory, data, template, componentFactory, templates){
 
   //TODO: find out why strict mode complains when I make these constants
