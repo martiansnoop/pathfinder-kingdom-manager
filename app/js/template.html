@@ -1,16 +1,5 @@
 {{#editables}}
 
-  <div class="col-lg-6">
-    <div id="leadershipRoles" class="panel panel-default">
-      <div class="panel-heading">Leaders</div>
-      <ul class="list-group">
-        {{#leaders}}
-        <li class="list-group-item">{{>leadershipRole}}</li>
-        {{/leaders}}
-      </ul>
-    </div>
-  </div>
-
 
   <div class="col-lg-8">
     <div id="buildings"  class="panel panel-default">
@@ -31,14 +20,6 @@
 
 <!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
 
-
-
-
-<!-- {{>leadershipRole}} -->
-{{role}}: <input type="text" value="{{name}}">, {{#modifiers}}
-                                                  {{>editableModifier}}
-                                                {{/modifiers}}
-<!-- {{/leadershipRole}} -->
 
 
 <!-- {{>editableModifier}} -->

@@ -1,0 +1,28 @@
+<div class="col-lg-6">
+  <div id="leadershipRoles" class="panel panel-default">
+    <div class="panel-heading">Leaders</div>
+    <ul class="list-group">
+      {{#leaders}}
+      <li class="list-group-item">{{>leadershipRole}}</li>
+      {{/leaders}}
+    </ul>
+  </div>
+</div>
+
+<!-- {{>leadershipRole}} -->
+{{role}}: <input type="text" value="{{name}}">, {{#modifiers}}
+  {{>editableModifier}}
+{{/modifiers}}
+<!-- {{/leadershipRole}} -->
+
+<!-- {{>editableModifier}} -->
+<!-- NOTE: the mustache will not render if the modifier is undefined, so this is a cheap trick to not know
+         the modifier provided by the thing. I may instead wish to put a "name" property on the modifier obj.
+         Also, these checks can technically be negative, and slots can be unfilled.
+         TODO: consolidate with buildings template-->
+
+{{#stability != undefined}}Stability: <input type="text" value="{{stability}}" on-change="onChange">{{/stability}}
+{{#economy  != undefined}}Economy: <input type="text" value="{{economy}}" on-change="onChange">{{/economy}}
+{{#loyalty  != undefined}}Loyalty: <input type="text" value="{{loyalty}}" on-change="onChange">{{/loyalty}}
+{{#consumption != undefined}} Consumption: <input type="text" value="{{consumption}}" on-change="onChange">{{/consumption}}
+<!-- {{/editableModifier}} -->

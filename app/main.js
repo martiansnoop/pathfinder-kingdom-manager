@@ -27,7 +27,6 @@ function($, _, Ractive, calcFactory, data, template, componentFactory, templates
     el: 'placeForStuff',
     template: template,
     data: {
-//      checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)],
       editables: data.editables
     }
   });
@@ -38,6 +37,10 @@ function($, _, Ractive, calcFactory, data, template, componentFactory, templates
 //      ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability)]);
 //    }
 //  });
+  var leadershipData = {
+    leaders: data.editables.leaders
+  };
+  var leadershipComponent = componentFactory("leadershipComponent", leadershipData, templates.leadership);
 
 
   var edictsData = {
