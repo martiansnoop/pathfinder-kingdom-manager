@@ -22,46 +22,46 @@ require.config({
 });
 
 //TODO: clean up imports and make main.js responsible for fewer than all the things
-define(["./js/calculate", "./js/data/namespace", "./js/component", "./js/templates/namespace"],
-function(calcFactory, data, componentFactory, templates){
+define(["./js/data/namespace", "./js/templates/namespace", "./js/components/namespace", "./pubsub"],
+function(data, templates, components, pubsub){
 
-  var buildingsData = {
-    buildings: data.editables.buildings
-  };
-  var buildingsComponent = componentFactory("buildingsComponent", buildingsData, templates.buildings);
+  var bus = pubsub();
+  var componentList = [];
 
-  var leadershipData = {
-    leaders: data.editables.leaders
-  };
-  var leadershipComponent = componentFactory("leadershipComponent", leadershipData, templates.leadership);
+  var componentsToRender = [{
+                            factory: components.edicts,
+                            template: templates.edicts,
+                            elementId: "edictsComponent"
+                          },
+                          {
+                            factory: components.checks,
+                            template: templates.checks,
+                            elementId: "checksComponent"
+                          }];
 
-
-  var edictsData = {
-    allEdicts: data.edicts,
-    selected: {
-      holiday: data.edicts.holidays[0],
-      taxation: data.edicts.taxation[0],
-      promotion: data.edicts.promotion[0]
-    }
-  };
-  var edictsComponent = componentFactory("edictsComponent", edictsData, templates.edicts);
-  edictsComponent.addListener("selectedEdictsChanged", function(event){
-    var breakpoint = false;
-    var newEdicts = event.context;
+  componentsToRender.forEach(function(compDef){
+    var comp = compDef.factory(bus);
+    componentList.push(comp);
+    comp.render(compDef.elementId, compDef.template);
   });
 
+  bus.publish("EdictsOverwriteRequested", {allEdicts: data.edicts, selected: data.editables.edicts});
+  bus.publish("RecalculateChecksRequested", data.editables);
 
-  //TODO: find out why strict mode complains when I make these constants
-  var economy = "economy";
-  var stability = "stability";
-  var loyalty = "loyalty";
-  var consumption = "consumption";
+  bus.subscribe("SelectedEdictsEdited", function(data){
+    bus.publish("RecalculateChecksRequested", {edicts: data});
+  });
 
-  var calculate = calcFactory(data.editables);
+//  var buildingsData = {
+//    buildings: data.editables.buildings
+//  };
+//  var buildingsComponent = componentFactory("buildingsComponent", buildingsData, templates.buildings);
+//
+//  var leadershipData = {
+//    leaders: data.editables.leaders
+//  };
+//  var leadershipComponent = componentFactory("leadershipComponent", leadershipData, templates.leadership);
 
-  var checksData = {
-    checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)]
-  };
 
-  var checksComponent = componentFactory("checksComponent", checksData, templates.checks);
+
 });

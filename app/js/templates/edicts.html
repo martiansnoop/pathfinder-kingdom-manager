@@ -7,15 +7,15 @@
     <ul class="list-group">
 
       <li class=list-group-item>
-        Holidays: <select value="{{selected.holiday}}">
+        Holidays: <select value="{{selected.holidays}}">
         {{#holidays:i}}
         <option value="{{.}}">{{label}}</option>
         {{/holidays}}
       </select>
 
-        {{#selected.holiday}}
+        {{#selected.holidays}}
         {{label}}
-        {{/selected.holiday}}
+        {{/selected.holidays}}
       </li>
 
 
