@@ -5,7 +5,8 @@ require.config({
     jquery: "./js/vendor/jquery",
     underscore: "./js/vendor/underscore",
     ractive: "./js/vendor/Ractive",
-    text: "./js/vendor/text"
+    text: "./js/vendor/text",
+    radio: "./js/vendor/radio"
   },
   shim: {
     jquery: {
@@ -13,6 +14,9 @@ require.config({
     },
     underscore: {
       exports: "_"
+    },
+    radio: {
+      exports: "radio"
     }
   }
 });

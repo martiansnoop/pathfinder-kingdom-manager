@@ -11,4 +11,5 @@ cp -R ./bower_components/ractive/build/Ractive.js ./app/js/vendor/
 cp -R ./bower_components/requirejs/require.js ./app/js/vendor/
 cp -R ./bower_components/requirejs-text/text.js ./app/js/vendor/
 cp -R ./bower_components/underscore/underscore.js ./app/js/vendor/
+cp -R ./bower_components/Radio/radio.js ./app/js/vendor/
 
