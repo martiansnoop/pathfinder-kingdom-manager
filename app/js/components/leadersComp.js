@@ -9,7 +9,7 @@ define(["../component"], function(componentFactory){
     function updateData(newData) {
       data = newData;
       if(component) {
-        component.update("buildings", newData.buildings);
+        component.update("leaders", newData.leaders);
       }
     }
 
@@ -28,7 +28,7 @@ define(["../component"], function(componentFactory){
       });
     }
 
-    messageBus.subscribe("BuildingsOverwriteRequested", function(newData) {
+    messageBus.subscribe("LeadersOverwriteRequested", function(newData) {
       updateData(newData);
     });
 

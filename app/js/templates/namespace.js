@@ -1,9 +1,9 @@
-define(["text!./edicts.html", "text!./checks.html", "text!./leadership.html", "text!./buildings.html"],
-function(edicts, checks, leadership, buildings){
+define(["text!./edicts.html", "text!./checks.html", "text!./leaders.html", "text!./buildings.html"],
+function(edicts, checks, leaders, buildings){
   return {
     edicts: edicts,
     checks: checks,
-    leadership: leadership,
+    leaders: leaders,
     buildings: buildings
   }
 });
