@@ -48,8 +48,8 @@ function(data, templates, components, pubsub){
   bus.publish("EdictsOverwriteRequested", {allEdicts: data.edicts, selected: data.editables.edicts});
   bus.publish("RecalculateChecksRequested", data.editables);
 
-  bus.subscribe("SelectedEdictsEdited", function(data){
-    bus.publish("RecalculateChecksRequested", {edicts: data});
+  bus.subscribe("UserEditedData", function(data){
+    bus.publish("RecalculateChecksRequested", data);
   });
 
 //  var buildingsData = {
