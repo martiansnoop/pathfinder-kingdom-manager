@@ -29,7 +29,7 @@
     <ul class="list-group">
 
       <li class=list-group-item>
-        Holidays: <select value="{{selectedHoliday}}">
+        Holidays: <select value="{{selectedHoliday}}" on-change="onChange">
         {{#holidays:i}}
         <option value="{{.}}">{{label}}</option>
         {{/holidays}}

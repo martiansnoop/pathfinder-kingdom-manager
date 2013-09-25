@@ -44,5 +44,20 @@ function($, _, Ractive, calcFactory, data, template){
       //TODO: find out how to recalculate only the necessary checks
       ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)]);
     }
-  })
+  });
+
+//  NOTE: This is one giant hack to get holidays to update
+  var pairsToObserve = [{editable: data.editables.edicts.holidays, keypath: "selectedHoliday"},
+    {editable: data.editables.edicts.taxation, keypath: "selectedTaxation"},
+    {editable: data.editables.edicts.promotion, keypath: "selectedPromotion"}];
+
+  pairsToObserve.forEach(function(pair){
+    ui.observe(pair.keypath, function(){
+      $.extend(true, pair.editable, ui.get(pair.keypath));
+      ui.fire("onChange");
+    });
+  });
+
+
+
 });
