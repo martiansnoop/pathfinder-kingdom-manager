@@ -31,8 +31,9 @@ define(["jquery", "underscore"], function($, _) {
 
   return function (editables){
     return function calculateCheck(checkName) {
+      var safeData = $.extend(true, {}, editables);
 
-      var modifiers = getModifiersForCheck(checkName, editables);
+      var modifiers = getModifiersForCheck(checkName, safeData);
       var totalModifier = _.chain(modifiers).pluck("modifier").reduce(sum, 0).value();
 
       return {
