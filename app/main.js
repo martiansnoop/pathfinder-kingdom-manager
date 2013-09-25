@@ -42,7 +42,7 @@ function($, _, Ractive, calcFactory, data, template){
   ui.on({
     onChange: function(event) {
       //TODO: find out how to recalculate only the necessary checks
-      ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability)]);
+      ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)]);
     }
   })
 });
