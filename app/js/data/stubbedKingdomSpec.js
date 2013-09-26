@@ -68,10 +68,8 @@ define({
           }
         }
       ],
-//      events: [
-//        {
-//        }
-//      ],
+      events: [
+      ],
       unrest: [ //TODO: make calculator less brittle
         {
           modifiers: {
