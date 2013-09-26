@@ -1,6 +1,18 @@
 define({
   modifierSources:
     {
+      alignments: {
+        lawful:{
+          modifiers: {
+            economy: 2
+          }
+        },
+        neutral: {
+          modifiers: {
+            stability: 2
+          }
+        }
+      },
       edicts: {
         holidays: {
           label: "6 per year",
@@ -79,7 +91,7 @@ define({
           }
         }
       ],
-      stats: {
+//      stats: {
           size: {
             hexes: 6,
             modifiers: {
@@ -98,7 +110,7 @@ define({
               consumption: -8
             }
           }
-      }
+//      }
 
     }
 });
