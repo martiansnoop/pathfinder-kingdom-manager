@@ -44,15 +44,7 @@ function($, _, Ractive, calcFactory, data, template){
       ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)]);
     },
     addBuilding: function(event) {
-      data.editables.buildings.push({
-        name: "really good building",
-        modifiers: {
-          economy: 2,
-          stability: 2,
-          loyalty: 2,
-          unrestWhenBuilt: -2
-        }
-      });
+      data.editables.buildings.push($.extend(true, {}, data.defaultBuilding));
       ui.fire("onChange");
     }
   });
