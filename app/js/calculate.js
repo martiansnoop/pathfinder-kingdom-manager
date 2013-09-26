@@ -11,7 +11,7 @@ define(["jquery", "underscore"], function($, _) {
       return item[checkName];
     }
     else {
-      return item.modifiers[checkName];
+      return item.modifiers ? item.modifiers[checkName] : undefined;
     }
   }
 
