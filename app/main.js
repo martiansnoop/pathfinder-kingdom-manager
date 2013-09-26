@@ -34,8 +34,7 @@ function($, _, Ractive, calcFactory, data, template){
     data: {
       checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)],
       editables: data.editables,
-      edicts: data.edicts,
-      selectedHoliday: data.edicts.holidays[2]
+      edicts: data.edicts
     }
   });
 
@@ -43,6 +42,18 @@ function($, _, Ractive, calcFactory, data, template){
     onChange: function(event) {
       //TODO: find out how to recalculate only the necessary checks
       ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)]);
+    },
+    addBuilding: function(event) {
+      data.editables.buildings.push({
+        name: "really good building",
+        modifiers: {
+          economy: 2,
+          stability: 2,
+          loyalty: 2,
+          unrestWhenBuilt: -2
+        }
+      });
+      ui.fire("onChange");
     }
   });
 
