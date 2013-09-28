@@ -44,7 +44,11 @@ function($, _, Ractive, calcFactory, data, template){
       ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)]);
     },
     addBuilding: function(event) {
-      data.editables.buildings.push($.extend(true, {}, data.defaultBuilding));
+      data.editables.buildings.push(deepCopy(data.defaultBuilding));
+      ui.fire("onChange");
+    },
+    addEvent: function(event) {
+      data.editables.events.push(deepCopy(data.defaultEvent));
       ui.fire("onChange");
     }
   });
@@ -62,5 +66,8 @@ function($, _, Ractive, calcFactory, data, template){
   });
 
 
+  function deepCopy(thing) {
+    return $.extend(true, {}, thing);
+  }
 
 });
