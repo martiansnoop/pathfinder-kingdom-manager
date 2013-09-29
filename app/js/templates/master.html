@@ -3,6 +3,19 @@
     <button type="button" class="btn btn-default" on-click="saveEditables">Save</button>
     <button type="button" class="btn btn-default" on-click="loadEditables">Load</button>
   </div>
+
+  <div class="col-lg-1">
+    <div class="form-group">
+      {{#singleValues}}
+        <label for="unrest"> Unrest: </label>
+        <input id="unrest" class="form-control" type="text" value="{{unrest}}">
+
+        <label for="treasury">Treasury:</label>
+        <input id="treasury"  class="form-control" type="text" value="{{treasury}}">
+      {{/singleValues}}
+    </div>
+
+  </div>
 </div>
 
 <div class=row>

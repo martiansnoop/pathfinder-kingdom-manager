@@ -51,17 +51,20 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
     },
     saveEditables: function(event) {
       window.localStorage["kingmakerKingdomData"] = JSON.stringify(ui.get("editables"));
+      window.localStorage["kingmakerSingleValues"] = JSON.stringify(ui.get("singleValues"));
     },
     loadEditables: function(event) {
       var newEditables = JSON.parse(window.localStorage["kingmakerKingdomData"]);
-      init(newEditables, ui);
+      var newSingles = JSON.parse(window.localStorage["kingmakerSingleValues"])
+      init(newEditables, newSingles, ui);
     }
   });
 
-  init(data.editables, ui);
+  init(data.editables,{unrest: 1, treasury: 13}, ui);
 
-  function init(editables, ui) {
+  function init(editables, singles, ui) {
     ui.set("editables", editables);
+    ui.set("singleValues", singles);
     ui.set("checks", calculateChecks(editables) );
     wireSelectLists(editables, ui);
   }
