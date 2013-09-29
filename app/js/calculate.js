@@ -33,20 +33,11 @@ define(["jquery", "underscore"], function($, _) {
   return function (editables){
     return function calculateCheck(checkName) {
       var safeData = $.extend(true, {}, editables);
-
       var modifierSet = getModifierSet(checkName, safeData);
-
-      //TODO: clean this up by modifying the template to take the data in a better format
-      var sources = _.map(modifierSet, function(val, key) {
-        return {
-          from: key,
-          modifier: val
-        };
-      });
 
       return {
         name: checkName,
-        sources: sources,
+        sources: modifierSet,
         modifier: _.reduce(modifierSet, sum, 0)
       }
 

@@ -5,9 +5,9 @@
       <div class="panel-heading">{{name}}  <span class="badge pull-right">{{ modifier }}</span></div>
       <div class="panel-body">
         <ul>
-          {{#sources}}
+          {{#sources:key}}
           <li>
-            {{from}}: {{modifier}}
+            {{key}}: {{.}}
           </li>
           {{/sources}}
         </ul>
