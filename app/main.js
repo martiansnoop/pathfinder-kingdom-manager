@@ -19,15 +19,7 @@ require.config({
 
 //TODO: make this responsible for fewer than all the things
 define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "./js/listUtil/listUtil", "./js/templates/namespace"],
-function($, _, Ractive, calcFactory, data, listUtil, templates){
-
-  //TODO: find out why strict mode complains when I make these constants
-  var economy = "economy";
-  var stability = "stability";
-  var loyalty = "loyalty";
-  var consumption = "consumption";
-
-  var calculate = calcFactory(data.editables);
+function($, _, Ractive, calculateChecks, data, listUtil, templates){
 
   var ui = new Ractive({
     el: 'placeForStuff',
@@ -39,11 +31,37 @@ function($, _, Ractive, calcFactory, data, listUtil, templates){
       leaders: templates.leaders
     },
     data: {
-      checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)],
-      editables: data.editables,
       edicts: data.edicts
     }
   });
+
+
+  ui.on({
+    onChange: function(event) {
+      ui.set("checks", calculateChecks(ui.get("editables")));
+    },
+    addBuilding: function(event) {
+      displayNewItemDialog(ui.get("editables.buildings"), "New Building");
+    },
+    addEvent: function(event) {
+      displayNewItemDialog(ui.get("editables.events"), "New Event");
+    },
+    saveEditables: function(event) {
+      window.localStorage["kingmakerKingdomData"] = JSON.stringify(ui.get("editables"));
+    },
+    loadEditables: function(event) {
+      var newEditables = JSON.parse(window.localStorage["kingmakerKingdomData"]);
+      init(newEditables, ui);
+    }
+  });
+
+  init(data.editables, ui);
+
+  function init(editables, ui) {
+    ui.set("editables", editables);
+    ui.set("checks", calculateChecks(editables) );
+    wireSelectLists(editables, ui);
+  }
 
   function displayNewItemDialog(listToPushTo, defaultItemName) {
     function callback(newItem) {
@@ -54,40 +72,21 @@ function($, _, Ractive, calcFactory, data, listUtil, templates){
     listUtil("editor", defaultItemName, callback);
   }
 
-  ui.on({
-    onChange: function(event) {
-      //TODO: find out how to recalculate only the necessary checks.
-      //      Also, this relies on the fact that data.editables is an object reference shared across everything
-      //        which really isn't the best thing ever
-      ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)]);
-    },
-    addBuilding: function(event) {
-      displayNewItemDialog(data.editables.buildings, "New Building");
-    },
-    addEvent: function(event) {
-      displayNewItemDialog(data.editables.events, "New Event");
-    },
-    saveEditables: function(event) {
-      window.localStorage["kingmakerKingdomData"] = JSON.stringify(data.editables);
-    },
-    loadEditables: function(event) {
-      data.editables = JSON.parse(window.localStorage["kingmakerKingdomData"]);
-    }
-  });
-
 //  NOTE: This is one giant hack to get holidays to update. TODO: better figure out how to
 //        wrangle ractive and select lists
-  var pairsToObserve = [{editable: data.editables.edicts.holidays, keypath: "selectedHoliday"},
-    {editable: data.editables.edicts.taxation, keypath: "selectedTaxation"},
-    {editable: data.editables.edicts.promotion, keypath: "selectedPromotion"}];
 
-  pairsToObserve.forEach(function(pair){
-    ui.observe(pair.keypath, function(){
-      $.extend(true, pair.editable, ui.get(pair.keypath));
-      ui.fire("onChange");
+  function wireSelectLists(editables, ui) {
+    var pairsToObserve = [{editable: editables.edicts.holidays, keypath: "selectedHoliday"},
+      {editable: editables.edicts.taxation, keypath: "selectedTaxation"},
+      {editable: editables.edicts.promotion, keypath: "selectedPromotion"}];
+
+    pairsToObserve.forEach(function(pair){
+      ui.observe(pair.keypath, function(){
+        $.extend(true, pair.editable, ui.get(pair.keypath));
+        ui.fire("onChange");
+      });
     });
-  });
-
+  }
 
   function deepCopy(thing) {
     return $.extend(true, {}, thing);
