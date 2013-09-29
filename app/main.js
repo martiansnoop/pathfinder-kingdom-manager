@@ -39,9 +39,14 @@ function($, _, Ractive, calcFactory, data, template, listUtil){
     }
   });
 
-  var editor = listUtil("editor", "New Something", function(newThing){
-    console.log(newThing);
-  });
+  function displayNewItemDialog(listToPushTo, defaultItemName) {
+    function callback(newItem) {
+      listToPushTo.push(deepCopy(newItem));
+      ui.fire("onChange");
+    }
+
+    listUtil("editor", defaultItemName, callback);
+  }
 
   ui.on({
     onChange: function(event) {
@@ -51,12 +56,10 @@ function($, _, Ractive, calcFactory, data, template, listUtil){
       ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)]);
     },
     addBuilding: function(event) {
-      data.editables.buildings.push(deepCopy(data.defaultBuilding));
-      ui.fire("onChange");
+      displayNewItemDialog(data.editables.buildings, "New Building");
     },
     addEvent: function(event) {
-      data.editables.events.push(deepCopy(data.defaultEvent));
-      ui.fire("onChange");
+      displayNewItemDialog(data.editables.events, "New Event");
     }
   });
 
