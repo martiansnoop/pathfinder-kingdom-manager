@@ -17,8 +17,9 @@ require.config({
   }
 });
 
-define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "text!./js/template"],
-function($, _, Ractive, calcFactory, data, template){
+//TODO: make this responsible for fewer than all the things
+define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "text!./js/template", "./js/listUtil/listUtil"],
+function($, _, Ractive, calcFactory, data, template, listUtil){
 
   //TODO: find out why strict mode complains when I make these constants
   var economy = "economy";
@@ -38,9 +39,15 @@ function($, _, Ractive, calcFactory, data, template){
     }
   });
 
+  var editor = listUtil("editor", "New Something", function(newThing){
+    console.log(newThing);
+  });
+
   ui.on({
     onChange: function(event) {
-      //TODO: find out how to recalculate only the necessary checks
+      //TODO: find out how to recalculate only the necessary checks.
+      //      Also, this relies on the fact that data.editables is an object reference shared across everything
+      //        which really isn't the best thing ever
       ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)]);
     },
     addBuilding: function(event) {
@@ -53,7 +60,8 @@ function($, _, Ractive, calcFactory, data, template){
     }
   });
 
-//  NOTE: This is one giant hack to get holidays to update
+//  NOTE: This is one giant hack to get holidays to update. TODO: better figure out how to
+//        wrangle ractive and select lists
   var pairsToObserve = [{editable: data.editables.edicts.holidays, keypath: "selectedHoliday"},
     {editable: data.editables.edicts.taxation, keypath: "selectedTaxation"},
     {editable: data.editables.edicts.promotion, keypath: "selectedPromotion"}];
