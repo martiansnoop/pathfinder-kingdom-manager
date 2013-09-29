@@ -66,6 +66,12 @@ function($, _, Ractive, calcFactory, data, listUtil, templates){
     },
     addEvent: function(event) {
       displayNewItemDialog(data.editables.events, "New Event");
+    },
+    saveEditables: function(event) {
+      window.localStorage["kingmakerKingdomData"] = JSON.stringify(data.editables);
+    },
+    loadEditables: function(event) {
+      data.editables = JSON.parse(window.localStorage["kingmakerKingdomData"]);
     }
   });
 
