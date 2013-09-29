@@ -18,8 +18,8 @@ require.config({
 });
 
 //TODO: make this responsible for fewer than all the things
-define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "text!./js/template", "./js/listUtil/listUtil"],
-function($, _, Ractive, calcFactory, data, template, listUtil){
+define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "text!./js/template", "./js/listUtil/listUtil", "text!./js/templates/checks.html"],
+function($, _, Ractive, calcFactory, data, template, listUtil, checks){
 
   //TODO: find out why strict mode complains when I make these constants
   var economy = "economy";
@@ -32,6 +32,7 @@ function($, _, Ractive, calcFactory, data, template, listUtil){
   var ui = new Ractive({
     el: 'placeForStuff',
     template: template,
+    partials:{checks: checks},
     data: {
       checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)],
       editables: data.editables,

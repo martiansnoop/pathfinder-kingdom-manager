@@ -1,28 +1,9 @@
-<div id="calculatedChecks">
-  {{#checks:i}}
-      {{>check}}
-  {{/checks}}
+<div id="checks">
+  {{>checks}}
 </div>
 
-<!-- {{>check}} -->
-<div class="col-lg-2">
-  <div class="panel panel-default">
-    <div class="panel-heading">{{name}}  <span class="badge pull-right">{{ modifier }}</span></div>
-    <div class="panel-body">
-      <ul>
-        {{#sources}}
-        <li>
-          {{from}}: {{modifier}}
-        </li>
-        {{/sources}}
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- {{/check}} -->
 
 <div id="editor">
-
 </div>
 
 
@@ -91,29 +72,44 @@
   </div>
 
 
-  <div class="col-lg-8">
+  <div class="col-lg-3">
     <div id="buildings"  class="panel panel-default">
       <div class="panel-heading">Buildings <button on-click="addBuilding">Add Building</button></div>
       <ul class="list-group">
         {{#buildings}}
-        <li class="list-group-item">{{>namedThingWithEditableModifiers}}</li>
+        <li class="list-group-item">{{>nonEditableModifier}}</li>
         {{/buildings}}
       </ul>
     </div>
   </div>
 
-  <div class="col-lg-8">
+  <div class="col-lg-3">
     <div id="events"  class="panel panel-default">
       <div class="panel-heading">Events <button on-click="addEvent">Add Event</button></div>
       <ul class="list-group">
         {{#events}}
-        <li class="list-group-item">{{>namedThingWithEditableModifiers}}</li>
+          <li class="list-group-item">{{>nonEditableModifier}}</li>
         {{/events}}
       </ul>
     </div>
   </div>
 
 {{/editables}}
+
+
+<!-- {{>nonEditableModifier}} -->
+    <div class="list-group">
+      <h5 class="list-group-item-heading">
+        {{name}}
+      </h5>
+      {{#modifiers:key}}
+        <p class="list-group-item-text">
+            {{key}}: {{.}}
+        </p>
+      {{/modifiers}}
+    </div>
+<!-- {{/nonEditableModifier}} -->
+
 
 
 <!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
@@ -136,10 +132,3 @@
   {{#consumption != undefined}} Consumption: <input type="text" value="{{consumption}}" on-change="onChange">{{/consumption}}
 <!-- {{/editableModifier}} -->
 
-<!-- {{>namedThingWithEditableModifiers}} -->
-
-  <input type="text" value="{{name}}"/>:{{#modifiers}}
-             {{>editableModifier}}
-           {{/modifiers}}
-
-<!-- {{/namedThingWithEditableModifiers}} -->
