@@ -2,7 +2,6 @@
   {{>checks}}
 </div>
 
-
 <div id="editor">
 </div>
 
@@ -10,68 +9,30 @@
     {{>edicts}}
 </div>
 
+<div id="lists">
+    {{>lists}}
+</div>
 
-{{#editables}}
-
-  <div class="col-lg-6">
-    <div id="leadershipRoles" class="panel panel-default">
-      <div class="panel-heading">Leaders</div>
-      <ul class="list-group">
-        {{#leaders}}
-        <li class="list-group-item">{{>leadershipRole}}</li>
-        {{/leaders}}
-      </ul>
-    </div>
-  </div>
-
-
-  <div class="col-lg-3">
-    <div id="buildings"  class="panel panel-default">
-      <div class="panel-heading">Buildings <button on-click="addBuilding">Add Building</button></div>
-      <ul class="list-group">
-        {{#buildings}}
-        <li class="list-group-item">{{>nonEditableModifier}}</li>
-        {{/buildings}}
-      </ul>
-    </div>
-  </div>
-
-  <div class="col-lg-3">
-    <div id="events"  class="panel panel-default">
-      <div class="panel-heading">Events <button on-click="addEvent">Add Event</button></div>
-      <ul class="list-group">
-        {{#events}}
-          <li class="list-group-item">{{>nonEditableModifier}}</li>
-        {{/events}}
-      </ul>
-    </div>
-  </div>
-
-{{/editables}}
-
-
-<!-- {{>nonEditableModifier}} -->
-    <div class="list-group">
-      <h5 class="list-group-item-heading">
-        {{name}}
-      </h5>
-      {{#modifiers:key}}
-        <p class="list-group-item-text">
-            {{key}}: {{.}}
-        </p>
-      {{/modifiers}}
-    </div>
-<!-- {{/nonEditableModifier}} -->
-
-
+<div id="leaders">
+  {{>leaders}}
+</div>
 
 <!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
+  <!-- FURTHERMORE, these should really be inline templates in the lists/leaders files, but
+      there appears to be a bug/lack of feature in Ractive that currently prohibits that-->
 
-<!-- {{>leadershipRole}} -->
-{{role}}: <input type="text" value="{{name}}">, {{#modifiers}}
-                                                  {{>editableModifier}}
-                                                {{/modifiers}}
-<!-- {{/leadershipRole}} -->
+<!-- {{>nonEditableModifier}} -->
+<div class="list-group">
+  <h5 class="list-group-item-heading">
+    {{name}}
+  </h5>
+  {{#modifiers:key}}
+  <p class="list-group-item-text">
+    {{key}}: {{.}}
+  </p>
+  {{/modifiers}}
+</div>
+<!-- {{/nonEditableModifier}} -->
 
 
 <!-- {{>editableModifier}} -->
@@ -79,9 +40,9 @@
          the modifier provided by the thing. I may instead wish to put a "name" property on the modifier obj.
          Also, these checks can technically be negative, and slots can be unfilled. -->
 
-  {{#stability != undefined}}Stability: <input type="text" value="{{stability}}" on-change="onChange">{{/stability}}
-  {{#economy  != undefined}}Economy: <input type="text" value="{{economy}}" on-change="onChange">{{/economy}}
-  {{#loyalty  != undefined}}Loyalty: <input type="text" value="{{loyalty}}" on-change="onChange">{{/loyalty}}
-  {{#consumption != undefined}} Consumption: <input type="text" value="{{consumption}}" on-change="onChange">{{/consumption}}
+{{#stability != undefined}}Stability: <input type="text" value="{{stability}}" on-change="onChange">{{/stability}}
+{{#economy  != undefined}}Economy: <input type="text" value="{{economy}}" on-change="onChange">{{/economy}}
+{{#loyalty  != undefined}}Loyalty: <input type="text" value="{{loyalty}}" on-change="onChange">{{/loyalty}}
+{{#consumption != undefined}} Consumption: <input type="text" value="{{consumption}}" on-change="onChange">{{/consumption}}
 <!-- {{/editableModifier}} -->
 

@@ -32,7 +32,12 @@ function($, _, Ractive, calcFactory, data, listUtil, templates){
   var ui = new Ractive({
     el: 'placeForStuff',
     template: templates.master,
-    partials: {checks: templates.checks, edicts: templates.edicts},
+    partials: {
+      lists: templates.lists,
+      checks: templates.checks,
+      edicts: templates.edicts,
+      leaders: templates.leaders
+    },
     data: {
       checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)],
       editables: data.editables,

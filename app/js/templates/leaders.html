@@ -1,0 +1,19 @@
+{{#editables}}
+
+<div class="col-lg-6">
+  <div id="leadershipRoles" class="panel panel-default">
+    <div class="panel-heading">Leaders</div>
+    <ul class="list-group">
+      {{#leaders}}
+      <li class="list-group-item">
+        {{role}}: <input type="text" value="{{name}}">, {{#modifiers}}
+        {{>editableModifier}}
+        {{/modifiers}}
+      </li>
+      {{/leaders}}
+    </ul>
+  </div>
+</div>
+
+{{/editables}}
+
