@@ -1,24 +1,31 @@
-<div id="checks" class="row">
-  {{>checks}}
-  <div id="editor">
-  </div>
-</div>
+<div class=row>
 
+  <div id="checks" class="col-lg-2">
+    {{>checks}}
+  </div>
+
+  <div id="lists" class="col-lg-8">
+    {{>lists}}
+  </div>
+
+  <div id="editor" class="col-lg-2">
+  </div>
+
+</div>
 
 
 <div class="row">
   <div id="edicts" class="col-lg-4">
     {{>edicts}}
   </div>
+  <div id="leaders" class="col-lg-6">
+    {{>leaders}}
+  </div>
 </div>
 
-<div id="lists" class="row">
-    {{>lists}}
-</div>
 
-<div id="leaders" class="col-lg-6">
-  {{>leaders}}
-</div>
+
+
 
 <!-- THE FOLLOWING IS AN INLINE TEMPLATE IDENTIFIER, NOT A COMMENT  -->
   <!-- FURTHERMORE, these should really be inline templates in the lists/leaders files, but

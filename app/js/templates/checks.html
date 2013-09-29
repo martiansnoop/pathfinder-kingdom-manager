@@ -1,18 +1,19 @@
-<div id="calculatedChecks">
-  {{#checks:i}}
-  <div class="col-lg-2">
-    <div class="panel panel-default">
-      <div class="panel-heading">{{name}}  <span class="badge pull-right">{{ modifier }}</span></div>
-      <div class="panel-body">
-        <ul>
-          {{#sources:key}}
-          <li>
-            {{key}}: {{.}}
-          </li>
-          {{/sources}}
-        </ul>
-      </div>
+<div id="calculatedChecks" class="panel panel-default">
+  <div class="panel-heading">Calculated Checks</div>
+    <div class="panel-body list-group">
+    {{#checks:i}}
+
+      <h4 class="list-group-item-heading">{{name}}  <span class="label label-default pull-right">{{ modifier }}</span> </h4>
+
+      {{#debug}}
+        {{#sources:key}}
+        <p class="list-group-item-text">
+          {{key}}: {{.}}
+        </p>
+        {{/sources}}
+      {{/debug}}
+
+    {{/checks}}
     </div>
-  </div>
-  {{/checks}}
 </div>
+
