@@ -11,19 +11,18 @@
     {{>checks}}
   </div>
 
-  <div id="lists" class="col-lg-8">
-    {{>lists}}
+  <div id="edicts" class="col-lg-4">
+    {{>edicts}}
   </div>
 
 </div>
 
 <div class="row">
-  <div id="edicts" class="col-lg-4">
-    {{>edicts}}
+
+  <div id="lists" class="col-lg-8">
+    {{>lists}}
   </div>
-  <div id="leaders" class="col-lg-6">
-    {{>leaders}}
-  </div>
+
   <div id="editor" class="col-lg-2">
   </div>
 </div>
@@ -44,16 +43,3 @@
   {{/modifiers}}
 </div>
 <!-- {{/nonEditableModifier}} -->
-
-
-<!-- {{>editableModifier}} -->
-<!-- NOTE: the mustache will not render if the modifier is undefined, so this is a cheap trick to not know
-         the modifier provided by the thing. I may instead wish to put a "name" property on the modifier obj.
-         Also, these checks can technically be negative, and slots can be unfilled. -->
-
-{{#stability != undefined}}Stability: <input type="text" value="{{stability}}" on-change="onChange">{{/stability}}
-{{#economy  != undefined}}Economy: <input type="text" value="{{economy}}" on-change="onChange">{{/economy}}
-{{#loyalty  != undefined}}Loyalty: <input type="text" value="{{loyalty}}" on-change="onChange">{{/loyalty}}
-{{#consumption != undefined}} Consumption: <input type="text" value="{{consumption}}" on-change="onChange">{{/consumption}}
-<!-- {{/editableModifier}} -->
-

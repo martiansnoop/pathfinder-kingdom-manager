@@ -46,6 +46,9 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
     addEvent: function(event) {
       displayNewItemDialog(ui.get("editables.events"), "New Event");
     },
+    addLeader: function(event) {
+      displayNewItemDialog(ui.get("editables.leaders"), "New Leader");
+    },
     saveEditables: function(event) {
       window.localStorage["kingmakerKingdomData"] = JSON.stringify(ui.get("editables"));
     },

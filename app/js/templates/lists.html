@@ -1,5 +1,5 @@
 {{#editables}}
-<div class="col-lg-5">
+<div class="col-lg-4">
   <div id="buildings"  class="panel panel-default">
     <div class="panel-heading">Buildings <button on-click="addBuilding">Add Building</button></div>
     <ul class="list-group">
@@ -10,13 +10,24 @@
   </div>
 </div>
 
-<div class="col-lg-5">
+<div class="col-lg-4">
   <div id="events"  class="panel panel-default">
     <div class="panel-heading">Events <button on-click="addEvent">Add Event</button></div>
     <ul class="list-group">
       {{#events}}
       <li class="list-group-item">{{>nonEditableModifier}}</li>
       {{/events}}
+    </ul>
+  </div>
+</div>
+
+<div class="col-lg-4">
+  <div id="leaders"  class="panel panel-default">
+    <div class="panel-heading">Leaders <button on-click="addLeader">Add Leader</button></div>
+    <ul class="list-group">
+      {{#leaders}}
+      <li class="list-group-item">{{role}}: {{>nonEditableModifier}}</li>
+      {{/leaders}}
     </ul>
   </div>
 </div>
