@@ -47,7 +47,7 @@
 <!-- {{>nonEditableModifier}} -->
 <div class="list-group">
   <h5 class="list-group-item-heading">
-    {{name}}
+    {{name}} <span class="pull-right" on-click="removeItemFromList">x</span>
   </h5>
   {{#modifiers:key}}
   <p class="list-group-item-text">

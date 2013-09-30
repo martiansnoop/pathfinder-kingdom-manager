@@ -49,6 +49,18 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
     addLeader: function(event) {
       displayNewItemDialog(ui.get("editables.leaders"), "New Leader");
     },
+    removeItemFromList: function(event) {
+      var thingBeingDeleted = event.context.name;
+
+      confirm("Delete " + thingBeingDeleted + "?");
+      var keys = event.keypath.split(".");
+      var index = keys[2];
+      var arrayKeyPath = keys[0] + "." + keys[1];
+      var array = ui.get(arrayKeyPath);
+
+      array.splice(index, 1);
+      ui.fire("onChange");
+    },
     saveEditables: function(event) {
       window.localStorage["kingmakerKingdomData"] = JSON.stringify(ui.get("editables"));
       window.localStorage["kingmakerSingleValues"] = JSON.stringify(ui.get("singleValues"));
@@ -71,6 +83,14 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
 
   function displayNewItemDialog(listToPushTo, defaultItemName) {
     function callback(newItem) {
+      if(newItem.modifiers.unrest) {
+        ui.set("singleValues.unrest", parseInt(ui.get("singleValues.unrest")) + newItem.modifiers.unrest);
+      }
+
+      if(newItem.modifiers.bp_cost) {
+        ui.set("singleValues.treasury", parseInt(ui.get("singleValues.treasury")) - newItem.modifiers.bp_cost);
+      }
+
       listToPushTo.push(deepCopy(newItem));
       ui.fire("onChange");
     }
