@@ -49,6 +49,9 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
     addLeader: function(event) {
       displayNewItemDialog(ui.get("editables.leaders"), "New Leader");
     },
+    addTileImprovement: function(event) {
+      displayNewItemDialog(ui.get("editables.tileImprovements"), "New Tile Improvement");
+    },
     removeItemFromList: function(event) {
       var thingBeingDeleted = event.context.name;
 

@@ -72,15 +72,15 @@ define({
           }
         }
       ],
-      resources: [
+      events: [
+      ],
+      tileImprovements: [
         {
           name: "Gold mine",
           modifiers: {
-            economy: 2
+            economy: 3
           }
         }
-      ],
-      events: [
       ],
       unrest: [ //TODO: make calculator less brittle
         {
