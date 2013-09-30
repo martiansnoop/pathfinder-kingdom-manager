@@ -46,8 +46,24 @@ define(["jquery", "underscore"], function($, _) {
 
   }
 
-  return function (editables){
+  return function (editables, unrest, size){
     var safeData = $.extend(true, {}, editables);
+
+    //TODO: make this not shitty
+    safeData.unrest = {};
+    safeData.unrest.modifiers = {
+      economy: -unrest,
+      stability: -unrest,
+      loyalty: -unrest
+    }
+
+    safeData.size = {}
+    safeData.size.hexes = size;
+    safeData.size.modifiers = {
+      consumption: size
+    }
+
+
     var calculateCheck = _.partial(calculate, safeData)
 
     return [calculateCheck(economy), calculateCheck(loyalty), calculateCheck(stability), calculateCheck(consumption)];

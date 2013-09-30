@@ -38,7 +38,7 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
 
   ui.on({
     onChange: function(event) {
-      ui.set("checks", calculateChecks(ui.get("editables")));
+      ui.set("checks", calculateChecks(ui.get("editables"), ui.get("singleValues.unrest"), ui.get("singleValues.size")));
     },
     addBuilding: function(event) {
       displayNewItemDialog(ui.get("editables.buildings"), "New Building");
@@ -72,12 +72,12 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
     }
   });
 
-  init(data.editables,{unrest: 1, treasury: 13}, ui);
+  init(data.editables,{unrest: 1, treasury: 13, size: 6}, ui);
 
   function init(editables, singles, ui) {
     ui.set("editables", editables);
     ui.set("singleValues", singles);
-    ui.set("checks", calculateChecks(editables) );
+    ui.set("checks", calculateChecks(editables, ui.get("singleValues.unrest"), ui.get("singleValues.size")) );
     wireSelectLists(editables, ui);
   }
 
