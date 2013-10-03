@@ -1,4 +1,4 @@
-define(["jquery", "underscore", "text!./newItemDialog", "ractive"], function($, _, template, Ractive){
+define(["../util", "underscore", "text!./newItemDialog", "ractive"], function(util, _, template, Ractive){
 
   var newItemTemplate =  {
     name: "New item",
@@ -12,18 +12,13 @@ define(["jquery", "underscore", "text!./newItemDialog", "ractive"], function($, 
     }
   };
 
-
-  function deepCopy(thing) {
-    return $.extend(true, {}, thing);
-  }
-
   function filterUnusedModifiers(data) {
 
     function isNonzeroNumber(num) {
       return _.isNumber(num) && num != 0;
     }
 
-    var safeData = deepCopy(data);
+    var safeData = util.deepCopy(data);
     var modifiers = safeData.modifiers;
 
     _.each(_.keys(modifiers), function(key) {
@@ -55,7 +50,7 @@ define(["jquery", "underscore", "text!./newItemDialog", "ractive"], function($, 
   }
 
   return function(elementId, name, onSave) {
-    var data = $.extend(true, {}, newItemTemplate)
+    var data = util.deepCopy(newItemTemplate)
     data.name = name || data.name;
 
     render(elementId, data, onSave);

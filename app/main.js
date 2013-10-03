@@ -18,8 +18,8 @@ require.config({
 });
 
 //TODO: make this responsible for fewer than all the things
-define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "./js/newItemDialog/newItemDialog", "./js/templates/namespace"],
-function($, _, Ractive, calculateChecks, data, renderNewItemDialog, templates){
+define(["./js/util", "ractive", "./js/calculate", "./js/data/data", "./js/newItemDialog/newItemDialog", "./js/templates/namespace"],
+function(util, Ractive, calculateChecks, data, renderNewItemDialog, templates){
 
   var ui = new Ractive({
     el: 'placeForStuff',
@@ -95,7 +95,7 @@ function($, _, Ractive, calculateChecks, data, renderNewItemDialog, templates){
         ui.set("singleValues.treasury", parseInt(ui.get("singleValues.treasury")) - newItem.modifiers.bp_cost);
       }
 
-      listToPushTo.push(deepCopy(newItem));
+      listToPushTo.push(util.deepCopy(newItem));
       ui.fire("onChange");
     }
 
@@ -114,14 +114,10 @@ function($, _, Ractive, calculateChecks, data, renderNewItemDialog, templates){
 
     pairsToObserve.forEach(function(pair){
       ui.observe(pair.keypath, function(){
-        $.extend(true, pair.editable, ui.get(pair.keypath));
+        util.cloneInto(pair.editable, ui.get(pair.keypath));
         ui.fire("onChange");
       });
     });
-  }
-
-  function deepCopy(thing) {
-    return $.extend(true, {}, thing);
   }
 
 });
