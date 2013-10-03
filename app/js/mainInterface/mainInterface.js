@@ -95,8 +95,10 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
   }
 
 
-  return function(staticData, mutableData, externalDataInterface) {
+  return function(staticData, externalDataInterface) {
     var ui = render(staticData);
+    var mutableData = externalDataInterface.load();
+
     init(mutableData, ui);
     wireEvents(ui, externalDataInterface);
   }

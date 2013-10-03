@@ -32,6 +32,7 @@ define(["./js/data/namespace","./js/mainInterface/mainInterface"], function(data
 
   var dataInterface = {
     save: function(mutableData) {
+      //TODO: Fall back to some mutually agreeable init value if stuff is not in localStorage
       window.localStorage["kingmakerKingdomData"] = JSON.stringify(mutableData.editables);
       window.localStorage["kingmakerSingleValues"] = JSON.stringify(mutableData.singles);
     },
@@ -46,8 +47,6 @@ define(["./js/data/namespace","./js/mainInterface/mainInterface"], function(data
   };
 
 
-  //TODO: turn arguments into an options argument if I need any more things passed in
-  //TODO: don't pass in mutableData; instead, get it from dataInterface
-  renderMainInterface(staticData, mutableData, dataInterface);
+  renderMainInterface(staticData, dataInterface);
 
 });
