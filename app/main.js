@@ -17,9 +17,7 @@ require.config({
   }
 });
 
-//TODO: make this responsible for fewer than all the things
-define(["./js/data/data","./js/mainInterface/mainInterface"],
-function(data, renderMainInterface){
+define(["./js/data/namespace","./js/mainInterface/mainInterface"], function(data, renderMainInterface){
 
   var staticData = {
     edicts: data.edicts,
