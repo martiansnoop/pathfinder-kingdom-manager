@@ -31,7 +31,8 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
       leaders: templates.leaders
     },
     data: {
-      edicts: data.edicts
+      edicts: data.edicts,
+      debug: false
     }
   });
 
@@ -108,6 +109,8 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
     var pairsToObserve = [{editable: editables.edicts.holidays, keypath: "selectedHoliday"},
       {editable: editables.edicts.taxation, keypath: "selectedTaxation"},
       {editable: editables.edicts.promotion, keypath: "selectedPromotion"}];
+
+    var edictDataSource = data.edicts;
 
     pairsToObserve.forEach(function(pair){
       ui.observe(pair.keypath, function(){

@@ -1,26 +1,3 @@
-<div class="row">
-  <div class="col-lg-2">
-    <button type="button" class="btn btn-default" on-click="saveEditables">Save</button>
-    <button type="button" class="btn btn-default" on-click="loadEditables">Load</button>
-  </div>
-
-  <div class="col-lg-1">
-    <div class="form-group">
-      {{#singleValues}}
-        <label for="unrest"> Unrest: </label>
-        <input id="unrest" class="form-control" type="text" value="{{unrest}}">
-
-        <label for="treasury">Treasury:</label>
-        <input id="treasury"  class="form-control" type="text" value="{{treasury}}">
-
-        <label for="size">Size:</label>
-        <input id="size"  class="form-control" type="text" value="{{size}}">
-      {{/singleValues}}
-    </div>
-
-  </div>
-</div>
-
 <div class=row>
 
   <div id="checks" class="col-lg-2">
@@ -29,6 +6,31 @@
 
   <div id="edicts" class="col-lg-4">
     {{>edicts}}
+  </div>
+
+  <div class="col-lg-2">
+    <button type="button" class="btn btn-default" on-click="saveEditables">Save</button>
+    <button type="button" class="btn btn-default" on-click="loadEditables">Load</button>
+
+    <label for="debug"> Debug: </label>
+    <input id="debug" type="checkbox" checked="{{debug}}">
+
+  </div>
+
+  <div class="col-lg-1">
+    <div class="form-group">
+      {{#singleValues}}
+      <label for="unrest"> Unrest: </label>
+      <input id="unrest" class="form-control" type="text" value="{{unrest}}" on-change="onChange">
+
+      <label for="treasury">Treasury:</label>
+      <input id="treasury"  class="form-control" type="text" value="{{treasury}}" on-change="onChange">
+
+      <label for="size">Size:</label>
+      <input id="size"  class="form-control" type="text" value="{{size}}" on-change="onChange">
+      {{/singleValues}}
+    </div>
+
   </div>
 
 </div>
