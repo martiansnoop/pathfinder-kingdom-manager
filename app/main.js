@@ -18,106 +18,35 @@ require.config({
 });
 
 //TODO: make this responsible for fewer than all the things
-define(["./js/util", "ractive", "./js/calculate", "./js/data/data", "./js/newItemDialog/newItemDialog", "./js/templates/namespace"],
-function(util, Ractive, calculateChecks, data, renderNewItemDialog, templates){
+define(["./js/data/data","./js/mainInterface/mainInterface"],
+function(data, renderMainInterface){
 
-  var ui = new Ractive({
-    el: 'placeForStuff',
-    template: templates.master,
-    partials: {
-      lists: templates.lists,
-      checks: templates.checks,
-      edicts: templates.edicts,
-      leaders: templates.leaders
-    },
-    data: {
-      edicts: data.edicts,
-      debug: false
-    }
-  });
+  var staticData = {
+    edicts: data.edicts,
+    alignments: data.alignments,
+    debug: false //TODO: this isn't really static
+  };
 
+  var mutableData = {
+    editables: data.editables,
+    singles: {unrest: 1, treasury: 13, size: 6}
+  };
 
-  ui.on({
-    onChange: function(event) {
-      ui.set("checks", calculateChecks(ui.get("editables"), ui.get("singleValues.unrest"), ui.get("singleValues.size")));
-    },
-    addBuilding: function(event) {
-      displayNewItemDialog(ui.get("editables.buildings"), "New Building");
-    },
-    addEvent: function(event) {
-      displayNewItemDialog(ui.get("editables.events"), "New Event");
-    },
-    addLeader: function(event) {
-      displayNewItemDialog(ui.get("editables.leaders"), "New Leader");
-    },
-    addTileImprovement: function(event) {
-      displayNewItemDialog(ui.get("editables.tileImprovements"), "New Tile Improvement");
-    },
-    removeItemFromList: function(event) {
-      var thingBeingDeleted = event.context.name;
-      confirm("Delete " + thingBeingDeleted + "?");
-
-      var keys = event.keypath.split(".");
-      var index = keys[2];
-      var arrayKeyPath = keys[0] + "." + keys[1];
-      var array = ui.get(arrayKeyPath);
-
-      array.splice(index, 1);
-      ui.fire("onChange");
-    },
+  //TODO: unhook these from the ractive/UI and make them store/retrieve stuff only
+  var callbacks = {
     saveEditables: function(event) {
       window.localStorage["kingmakerKingdomData"] = JSON.stringify(ui.get("editables"));
       window.localStorage["kingmakerSingleValues"] = JSON.stringify(ui.get("singleValues"));
     },
     loadEditables: function(event) {
       var newEditables = JSON.parse(window.localStorage["kingmakerKingdomData"]);
-      var newSingles = JSON.parse(window.localStorage["kingmakerSingleValues"])
+      var newSingles = JSON.parse(window.localStorage["kingmakerSingleValues"]);
       init(newEditables, newSingles, ui);
     }
-  });
+  };
 
-  init(data.editables,{unrest: 1, treasury: 13, size: 6}, ui);
 
-  function init(editables, singles, ui) {
-    ui.set("editables", editables);
-    ui.set("singleValues", singles);
-    ui.set("checks", calculateChecks(editables, ui.get("singleValues.unrest"), ui.get("singleValues.size")) );
-    wireSelectLists(editables, ui);
-  }
+  var ui = renderMainInterface(staticData, mutableData);
 
-  function displayNewItemDialog(listToPushTo, defaultItemName) {
-    function callback(newItem) {
-      if(newItem.modifiers.unrest) {
-        ui.set("singleValues.unrest", parseInt(ui.get("singleValues.unrest")) + newItem.modifiers.unrest);
-      }
-
-      if(newItem.modifiers.bp_cost) {
-        ui.set("singleValues.treasury", parseInt(ui.get("singleValues.treasury")) - newItem.modifiers.bp_cost);
-      }
-
-      listToPushTo.push(util.deepCopy(newItem));
-      ui.fire("onChange");
-    }
-
-    renderNewItemDialog("editor", defaultItemName, callback);
-  }
-
-//  NOTE: This is one giant hack to get holidays to update. TODO: better figure out how to
-//        wrangle ractive and select lists
-
-  function wireSelectLists(editables, ui) {
-    var pairsToObserve = [{editable: editables.edicts.holidays, keypath: "selectedHoliday"},
-      {editable: editables.edicts.taxation, keypath: "selectedTaxation"},
-      {editable: editables.edicts.promotion, keypath: "selectedPromotion"}];
-
-    var edictDataSource = data.edicts;
-
-    pairsToObserve.forEach(function(pair){
-      ui.observe(pair.keypath, function(){
-        util.cloneInto(pair.editable, ui.get(pair.keypath));
-        ui.fire("onChange");
-      });
-    });
-  }
 
 });
