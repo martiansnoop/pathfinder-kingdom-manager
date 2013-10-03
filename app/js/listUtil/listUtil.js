@@ -3,7 +3,7 @@ define(["jquery", "underscore", "text!./listComponent", "ractive"], function($, 
   var newItemTemplate =  {
     name: "New item",
       modifiers: {
-        economy: 1,
+        economy: 0,
         stability: 0,
         loyalty: 0,
         unrest: 0,
