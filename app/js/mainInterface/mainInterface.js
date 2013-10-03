@@ -2,7 +2,7 @@ define(["ractive", "../util", "./templates/namespace", "../newItemDialog/newItem
 function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
 
   function render(staticData) {
-    var ui = new Ractive({
+    return new Ractive({
       el: 'placeForStuff',
       template: templates.master,
       partials: {
@@ -13,8 +13,6 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
       },
       data: staticData
     });
-
-    return ui;
   }
 
   function init(mutableData, ui) {

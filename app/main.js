@@ -47,6 +47,7 @@ define(["./js/data/namespace","./js/mainInterface/mainInterface"], function(data
 
 
   //TODO: turn arguments into an options argument if I need any more things passed in
+  //TODO: don't pass in mutableData; instead, get it from dataInterface
   renderMainInterface(staticData, mutableData, dataInterface);
 
 });
