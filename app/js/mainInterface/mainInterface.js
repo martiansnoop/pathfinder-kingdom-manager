@@ -40,6 +40,8 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
         displayNewItemDialog(ui, ui.get("editables.tileImprovements"), "New Tile Improvement");
       },
       removeItemFromList: function(event) {
+        //WARNING: currently this depends on the context being an item in a list.
+        //If you move the delete button into a different context, this may no longer function
         var thingBeingDeleted = event.context.name;
         confirm("Delete " + thingBeingDeleted + "?");
 
