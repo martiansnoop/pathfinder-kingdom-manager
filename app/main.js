@@ -18,8 +18,8 @@ require.config({
 });
 
 //TODO: make this responsible for fewer than all the things
-define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "./js/listUtil/listUtil", "./js/templates/namespace"],
-function($, _, Ractive, calculateChecks, data, listUtil, templates){
+define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "./js/newItemDialog/newItemDialog", "./js/templates/namespace"],
+function($, _, Ractive, calculateChecks, data, renderNewItemDialog, templates){
 
   var ui = new Ractive({
     el: 'placeForStuff',
@@ -55,8 +55,8 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
     },
     removeItemFromList: function(event) {
       var thingBeingDeleted = event.context.name;
-
       confirm("Delete " + thingBeingDeleted + "?");
+
       var keys = event.keypath.split(".");
       var index = keys[2];
       var arrayKeyPath = keys[0] + "." + keys[1];
@@ -99,7 +99,7 @@ function($, _, Ractive, calculateChecks, data, listUtil, templates){
       ui.fire("onChange");
     }
 
-    listUtil("editor", defaultItemName, callback);
+    renderNewItemDialog("editor", defaultItemName, callback);
   }
 
 //  NOTE: This is one giant hack to get holidays to update. TODO: better figure out how to

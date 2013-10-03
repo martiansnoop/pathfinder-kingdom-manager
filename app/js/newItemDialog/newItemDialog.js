@@ -1,4 +1,4 @@
-define(["jquery", "underscore", "text!./listComponent", "ractive"], function($, _, template, Ractive){
+define(["jquery", "underscore", "text!./newItemDialog", "ractive"], function($, _, template, Ractive){
 
   var newItemTemplate =  {
     name: "New item",
