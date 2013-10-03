@@ -56,7 +56,7 @@ define({
           role: "Warden",
           name: "Kolinsky Sable",
           modifiers: {
-            stability: 4
+            loyalty: 4
           }
         }
 
