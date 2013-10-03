@@ -1,4 +1,4 @@
-define(["ractive", "../util", "../templates/namespace", "../newItemDialog/newItemDialog", "../calculate"],
+define(["ractive", "../util", "./templates/namespace", "../newItemDialog/newItemDialog", "../calculate"],
 function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
 
   function render(staticData) {
