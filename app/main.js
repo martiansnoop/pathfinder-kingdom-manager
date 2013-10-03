@@ -32,21 +32,23 @@ function(data, renderMainInterface){
     singles: {unrest: 1, treasury: 13, size: 6}
   };
 
-  //TODO: unhook these from the ractive/UI and make them store/retrieve stuff only
-  var callbacks = {
-    saveEditables: function(event) {
-      window.localStorage["kingmakerKingdomData"] = JSON.stringify(ui.get("editables"));
-      window.localStorage["kingmakerSingleValues"] = JSON.stringify(ui.get("singleValues"));
+  var dataInterface = {
+    save: function(mutableData) {
+      window.localStorage["kingmakerKingdomData"] = JSON.stringify(mutableData.editables);
+      window.localStorage["kingmakerSingleValues"] = JSON.stringify(mutableData.singles);
     },
-    loadEditables: function(event) {
+    load: function() {
       var newEditables = JSON.parse(window.localStorage["kingmakerKingdomData"]);
       var newSingles = JSON.parse(window.localStorage["kingmakerSingleValues"]);
-      init(newEditables, newSingles, ui);
+      return {
+        editables: newEditables,
+        singles: newSingles
+      };
     }
   };
 
 
-  var ui = renderMainInterface(staticData, mutableData);
-
+  //TODO: turn arguments into an options argument if I need any more things passed in
+  renderMainInterface(staticData, mutableData, dataInterface);
 
 });

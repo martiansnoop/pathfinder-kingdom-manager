@@ -24,7 +24,7 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
     wireSelectLists(mutableData.editables, ui);
   }
 
-  function wireEvents(ui) {
+  function wireEvents(ui, externalDataInterface) {
     ui.on({
       onChange: function(event) {
         ui.set("checks", calculateChecks(ui.get("editables"), ui.get("singleValues.unrest"), ui.get("singleValues.size")));
@@ -52,6 +52,13 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
 
         array.splice(index, 1);
         ui.fire("onChange");
+      },
+      saveEditables: function(event) {
+        externalDataInterface.save(ui.get("editables"), ui.get("singleValues"));
+      },
+      loadEditables: function(event) {
+        var newMutableData = externalDataInterface.load();
+        init(newMutableData, ui);
       }
     });
   }
@@ -90,11 +97,9 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
   }
 
 
-  //Just return this for now
-  return function(staticData, mutableData) {
+  return function(staticData, mutableData, externalDataInterface) {
     var ui = render(staticData);
     init(mutableData, ui);
-    wireEvents(ui);
-    return ui;
+    wireEvents(ui, externalDataInterface);
   }
 });
