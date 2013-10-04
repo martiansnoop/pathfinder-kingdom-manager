@@ -15,11 +15,11 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
     });
   }
 
-  function init(mutableData, ui) {
+  function init(mutableData, immutableData, ui) {
     ui.set("editables", mutableData.editables);
     ui.set("singleValues", mutableData.singles);
     ui.set("checks", calculateChecks(mutableData.editables, ui.get("singleValues.unrest"), ui.get("singleValues.size")) );
-    wireSelectLists(mutableData.editables, ui);
+    wireSelectLists(mutableData.editables.edicts, immutableData.edicts, ui);
   }
 
   function wireEvents(ui, externalDataInterface) {
@@ -83,25 +83,34 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
 //  NOTE: This is one giant hack to get edicts to update. TODO: better figure out how to
 //        wrangle ractive and select lists
 
-  function wireSelectLists(editables, ui) {
-    var pairsToObserve = [{editable: editables.edicts.holidays, keypath: "selectedHoliday"},
-      {editable: editables.edicts.taxation, keypath: "selectedTaxation"},
-      {editable: editables.edicts.promotion, keypath: "selectedPromotion"}];
+  function wireSelectLists(mutableEdicts, immutableEdicts, ui) {
+
+    var pairsToObserve = [
+      {editable: mutableEdicts.holidays, keypath: "selectedHoliday", immutables: immutableEdicts.holidays},
+      {editable: mutableEdicts.taxation, keypath: "selectedTaxation", immutables: immutableEdicts.taxation},
+      {editable: mutableEdicts.promotion, keypath: "selectedPromotion", immutables: immutableEdicts.promotion}
+    ];
 
     pairsToObserve.forEach(function(pair){
-      ui.observe(pair.keypath, function(){
+      pair.immutables.forEach(function(immutable) {
+        if(util.valueEquality(pair.editable.modifiers, immutable.modifiers)) {
+          ui.set(pair.keypath, immutable);
+        }
+      });
+
+      ui.observe(pair.keypath, function() {
         util.cloneInto(pair.editable, ui.get(pair.keypath));
-        ui.fire("onChange");
+        ui.defer(ui.fire("onChange"));
       });
     });
   }
 
 
-  return function(staticData, externalDataInterface) {
-    var ui = render(staticData);
+  return function(immutableData, externalDataInterface) {
+    var ui = render(immutableData);
     var mutableData = externalDataInterface.load();
 
-    init(mutableData, ui);
+    init(mutableData, immutableData, ui);
     wireEvents(ui, externalDataInterface);
   }
 });

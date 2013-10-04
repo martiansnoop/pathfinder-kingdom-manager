@@ -5,7 +5,7 @@
     <ul class="list-group">
 
       <li class=list-group-item>
-        Holidays: <select value="{{selectedHoliday}}" on-change="onChange">
+        Holidays: <select value="{{selectedHoliday}}">
         {{#holidays:i}}
         <option value="{{.}}">{{label}}</option>
         {{/holidays}}
@@ -16,9 +16,7 @@
         {{/selectedHoliday}}
       </li>
 
-
       <li class=list-group-item>
-
         Taxation: <select value="{{selectedTaxation}}">
         {{#taxation:i}}
         <option value="{{.}}">{{label}}</option>
@@ -29,9 +27,8 @@
         {{label}}
         {{/selectedTaxation}}
       </li>
+
       <li class=list-group-item>
-
-
         Promotion: <select value="{{selectedPromotion}}">
         {{#promotion:i}}
         <option value="{{.}}">{{label}}</option>
