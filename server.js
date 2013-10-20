@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express(),
-    port = 3000;
+    port = process.env.PORT || 3000;
 
 app.get("/", function(req, res) {
   //TODO: which of these is better?
