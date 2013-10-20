@@ -21,7 +21,56 @@
 </div>
 <!-- {{/check}} -->
 
+{{#edicts}}
+<div class="col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">Edicts</div>
 
+    <ul class="list-group">
+
+      <li class=list-group-item>
+        Holidays: <select value="{{selectedHoliday}}">
+        {{#holidays:i}}
+        <option value="{{.}}">{{label}}</option>
+        {{/holidays}}
+      </select>
+
+        {{#selectedHoliday}}
+        {{label}}
+        {{/selectedHoliday}}
+      </li>
+
+
+      <li class=list-group-item>
+
+  Taxation: <select value="{{selectedTaxation}}">
+              {{#taxation:i}}
+                <option value="{{.}}">{{label}}</option>
+              {{/taxation}}
+            </select>
+
+            {{#selectedTaxation}}
+              {{label}}
+            {{/selectedTaxation}}
+      </li>
+      <li class=list-group-item>
+
+
+      Promotion: <select value="{{selectedPromotion}}">
+              {{#promotion:i}}
+                <option value="{{.}}">{{label}}</option>
+              {{/promotion}}
+            </select>
+
+            {{#selectedPromotion}}
+              {{label}}
+            {{/selectedPromotion}}
+      </li>
+    </ul>
+
+  </div>
+</div>
+{{/edicts}}
 
 {{#editables}}
 

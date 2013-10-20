@@ -17,9 +17,8 @@ require.config({
   }
 });
 
-//TODO: clean up imports and make main.js responsible for fewer than all the things
-define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "text!./js/template", "./js/component", "./js/templates/namepace"],
-function($, _, Ractive, calcFactory, data, template, componentFactory, templates){
+define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "text!./js/template"],
+function($, _, Ractive, calcFactory, data, template){
 
   //TODO: find out why strict mode complains when I make these constants
   var economy = "economy";
@@ -34,7 +33,9 @@ function($, _, Ractive, calcFactory, data, template, componentFactory, templates
     template: template,
     data: {
       checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)],
-      editables: data.editables
+      editables: data.editables,
+      edicts: data.edicts,
+      selectedHoliday: data.edicts.holidays[2]
     }
   });
 
@@ -43,20 +44,5 @@ function($, _, Ractive, calcFactory, data, template, componentFactory, templates
       //TODO: find out how to recalculate only the necessary checks
       ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability)]);
     }
-  });
-
-
-  var edictsData = {
-    allEdicts: data.edicts,
-    selected: {
-      holiday: data.edicts.holidays[0],
-      taxation: data.edicts.taxation[0],
-      promotion: data.edicts.promotion[0]
-    }
-  };
-  var edictsComponent = componentFactory("edictsComponent", edictsData, templates.edicts);
-  edictsComponent.addListener("selectedEdictsChanged", function(event){
-    var breakpoint = false;
-    var newEdicts = event.context;
   })
 });
