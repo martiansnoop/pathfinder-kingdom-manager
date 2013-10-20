@@ -70,10 +70,12 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
     function callback(newItem) {
       if(newItem.modifiers.unrest) {
         ui.set("singleValues.unrest", parseInt(ui.get("singleValues.unrest")) + newItem.modifiers.unrest);
+        delete newItem.modifiers.unrest;
       }
 
       if(newItem.modifiers.bp_cost) {
         ui.set("singleValues.treasury", parseInt(ui.get("singleValues.treasury")) - newItem.modifiers.bp_cost);
+        delete newItem.modifiers.bp_cost
       }
 
       listToPushTo.push(util.deepCopy(newItem));
