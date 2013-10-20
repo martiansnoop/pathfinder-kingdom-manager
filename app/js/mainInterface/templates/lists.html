@@ -1,7 +1,7 @@
 {{#editables}}
 <div class="col-lg-3">
   <div id="buildings"  class="panel panel-default">
-    <div class="panel-heading">Buildings <button on-click="addBuilding">Add Building</button></div>
+    <div class="panel-heading">Buildings <button type="button" class="btn btn-default" on-click="addBuilding">Add Building</button></div>
     <ul class="list-group">
       {{#buildings}}
       <li class="list-group-item">{{>nonEditableModifier}}</li>
@@ -12,7 +12,7 @@
 
 <div class="col-lg-3">
   <div id="events"  class="panel panel-default">
-    <div class="panel-heading">Events <button on-click="addEvent">Add Event</button></div>
+    <div class="panel-heading">Events <button type="button" class="btn btn-default" on-click="addEvent">Add Event</button></div>
     <ul class="list-group">
       {{#events}}
       <li class="list-group-item">{{>nonEditableModifier}}</li>
@@ -23,7 +23,7 @@
 
 <div class="col-lg-3">
   <div id="leaders"  class="panel panel-default">
-    <div class="panel-heading">Leaders <button on-click="addLeader">Add Leader</button></div>
+    <div class="panel-heading">Leaders <button type="button" class="btn btn-default" on-click="addLeader">Add Leader</button></div>
     <ul class="list-group">
       {{#leaders}}
       <li class="list-group-item">{{>nonEditableModifier}}</li>
@@ -34,7 +34,7 @@
 
 <div class="col-lg-3">
   <div id="tileImprovements"  class="panel panel-default">
-    <div class="panel-heading">Tile Improvements <button on-click="addTileImprovement">Add</button></div>
+    <div class="panel-heading">Tile Improvements <button type="button" class="btn btn-default" on-click="addTileImprovement">Add</button></div>
     <ul class="list-group">
       {{#tileImprovements}}
       <li class="list-group-item">{{>nonEditableModifier}}</li>
