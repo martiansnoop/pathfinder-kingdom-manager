@@ -27,7 +27,7 @@ define(["./js/data/namespace","./js/mainInterface/mainInterface"], function(data
 
   var mutableData = {
     editables: data.editables,
-    singles: {unrest: 1, treasury: 13, size: 6}
+    singles: {unrest: 0, treasury: 14, size: 10}
   };
 
   var dataInterface = {
@@ -37,12 +37,14 @@ define(["./js/data/namespace","./js/mainInterface/mainInterface"], function(data
       window.localStorage["kingmakerSingleValues"] = JSON.stringify(mutableData.singles);
     },
     load: function() {
-      var newEditables = JSON.parse(window.localStorage["kingmakerKingdomData"]);
-      var newSingles = JSON.parse(window.localStorage["kingmakerSingleValues"]);
-      return {
-        editables: newEditables,
-        singles: newSingles
-      };
+      try {
+        return {
+          editables: JSON.parse(window.localStorage["kingmakerKingdomData"]),
+          singles: JSON.parse(window.localStorage["kingmakerSingleValues"])
+        };
+      } catch(error) {
+        return  mutableData;
+      }
     }
   };
 

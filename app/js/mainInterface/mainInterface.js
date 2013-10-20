@@ -54,7 +54,10 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
         ui.fire("onChange");
       },
       saveEditables: function(event) {
-        externalDataInterface.save(ui.get("editables"), ui.get("singleValues"));
+        externalDataInterface.save({
+          editables: ui.get("editables"),
+          singles: ui.get("singleValues")
+        })
       },
       loadEditables: function(event) {
         var newMutableData = externalDataInterface.load();
