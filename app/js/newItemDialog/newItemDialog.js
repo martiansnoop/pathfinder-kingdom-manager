@@ -1,4 +1,4 @@
-define(["../util", "underscore", "text!./newItemDialog", "ractive"], function(util, _, template, Ractive){
+define(["../util", "underscore", "text!./newItemDialog.html", "ractive"], function(util, _, template, Ractive){
 
   var newItemTemplate =  {
     name: "New item",
