@@ -24,6 +24,29 @@ define({
           }
         }
       },
+//      edicts: [
+//        {
+//          name: "Promotion Level",
+//          modifiers: {
+//            stability: 2,
+//            consumption: 2
+//          }
+//        },
+//        {
+//          name: "Taxation Level",
+//          modifiers: {
+//            economy: 1,
+//            loyalty: -1
+//          }
+//        },
+//        {
+//          name: "Festivals per year",
+//          modifiers: {
+//            loyalty: 2,
+//            consumption: 2
+//          }
+//        }
+//      ],
       leaders: [
         {
           role: "Ruler",
