@@ -7,6 +7,15 @@ define(["../component"], function(componentFactory){
 
 
     function updateData(data) {
+//      edictsData = {
+//        allEdicts: data,
+//        selected: {
+//          holiday: data.holidays[0],
+//          taxation: data.taxation[0],
+//          promotion: data.promotion[0]
+//        }
+//      };
+
       if(edictsComponent) {
         edictsComponent.update("selected", data.selected);
         edictsComponent.update("allEdicts", data.allEdicts);
@@ -18,7 +27,7 @@ define(["../component"], function(componentFactory){
 
       edictsComponent.addListener("selectedEdictsChanged", function(event){
         var newSelectedEdicts = event.context;
-        messageBus.publish("UserEditedData", {edicts: newSelectedEdicts});
+        messageBus.publish("SelectedEdictsEdited", newSelectedEdicts);
       });
     }
 
