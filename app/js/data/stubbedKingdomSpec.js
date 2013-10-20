@@ -16,18 +16,21 @@ define({
     {"name": "Trade Shop", "modifiers": {"economy": 1, "stability": 1}},
     {"name": "Shrine", "modifiers": {"loyalty": 1}},
     {"name": "Mill", "modifiers": {"economy": 1, "stability": 1}},
-    {"name": "Brewery (Loyal Patriot)", "modifiers": {"stability": 1, "loyalty": 1, "bp_cost": 6}},
-    {"name": "House", "modifiers": {"unrest": -1, "bp_cost": 6}},
-    {"name": "Herbalist", "modifiers": {"stability": 1, "loyalty": 1, "bp_cost": 10}},
-    {"name": "Park", "modifiers": {"loyalty": 1, "unrest": -1, "bp_cost": 4}},
-    {"name": "Castle", "modifiers": {"economy": 2, "stability": 2, "loyalty": 2, "unrest": -4}}
+    {"name": "Brewery (Loyal Patriot)", "modifiers": {"stability": 1, "loyalty": 1}},
+    {"name": "House", "modifiers": {}},
+    {"name": "Herbalist", "modifiers": {"stability": 1, "loyalty": 1}},
+    {"name": "Park", "modifiers": {"loyalty": 1}},
+    {"name": "Castle", "modifiers": {"economy": 2, "stability": 2, "loyalty": 2}}
   ], "events": [], "tileImprovements": [
     {"name": "Gold mine", "modifiers": {"economy": 3}},
-    {"name": "Silver Mine", "modifiers": {"economy": 3, "bp_cost": 6}},
-    {"name": "Saw Mill", "modifiers": {"stability": 1, "bp_cost": 3}},
-    {"name": "Saw Mill", "modifiers": {"stability": 1}}
-  ], "unrest": [
-    {"modifiers": {"economy": -1, "stability": -1, "loyalty": -1}}
-  ], "size": {"hexes": 6, "modifiers": {"consumption": 6}}, "cities": {"amount": 1, "modifiers": {"consumption": 1}}, "farms": {"amount": 4, "modifiers": {"consumption": -8}}}
+    {"name": "Silver Mine", "modifiers": {"economy": 3}},
+    {"name": "Saw Mill", "modifiers": {"stability": 1}},
+    {"name": "Saw Mill", "modifiers": {"stability": 1}},
+    {"name": "Farm", "modifiers": {"consumption": -2}},
+    {"name": "Farm", "modifiers": {"consumption": -2}},
+    {"name": "Farm", "modifiers": {"consumption": -2}},
+    {"name": "Farm", "modifiers": {"consumption": -2}}
+  ],
+    "cities": {"amount": 1, "modifiers": {"consumption": 1}}}
 
 });
