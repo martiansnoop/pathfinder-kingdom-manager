@@ -17,7 +17,8 @@ require.config({
   }
 });
 
-define(["./js/data/namespace","./js/mainInterface/mainInterface"], function(data, renderMainInterface){
+define(["./js/data/namespace", "./js/mainInterface/mainInterface", "./js/storageManager"],
+function(data, renderMainInterface, storageManager) {
 
   var staticData = {
     edicts: data.edicts,
@@ -30,29 +31,6 @@ define(["./js/data/namespace","./js/mainInterface/mainInterface"], function(data
     singles: {unrest: 0, treasury: 14, size: 10}
   };
 
-  var dataInterface = {
-    save: function(mutableData) {
-      //TODO: Fall back to some mutually agreeable init value if stuff is not in localStorage
-      window.localStorage["kingmakerKingdomData"] = JSON.stringify(mutableData.editables);
-      window.localStorage["kingmakerSingleValues"] = JSON.stringify(mutableData.singles);
-    },
-    load: function() {
-      try {
-        return {
-          editables: JSON.parse(window.localStorage["kingmakerKingdomData"]),
-          singles: JSON.parse(window.localStorage["kingmakerSingleValues"])
-        };
-      } catch(error) {
-        return  mutableData;
-      }
-    },
-    nuke: function() {
-      delete window.localStorage["kingmakerKingdomData"];
-      delete window.localStorage["kingmakerSingleValues"];
-    }
-  };
-
-
-  renderMainInterface(staticData, dataInterface);
+  renderMainInterface(staticData, storageManager.localStorage);
 
 });

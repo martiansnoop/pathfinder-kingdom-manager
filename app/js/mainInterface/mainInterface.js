@@ -22,7 +22,7 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
     wireSelectLists(mutableData.editables.edicts, immutableData.edicts, ui);
   }
 
-  function wireEvents(ui, externalDataInterface) {
+  function wireEvents(ui, externalDataInterface, immutableData) {
     ui.on({
       onChange: function(event) {
         ui.set("checks", calculateChecks(ui.get("editables"), ui.get("singleValues.unrest"), ui.get("singleValues.size")));
@@ -61,7 +61,7 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
       },
       loadEditables: function(event) {
         var newMutableData = externalDataInterface.load();
-        init(newMutableData, ui);
+        init(newMutableData, immutableData, ui);
       },
       nukeStoredData: function(event) {
         externalDataInterface.nuke();
@@ -119,6 +119,6 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
     var mutableData = externalDataInterface.load();
 
     init(mutableData, immutableData, ui);
-    wireEvents(ui, externalDataInterface);
+    wireEvents(ui, externalDataInterface, immutableData);
   }
 });
