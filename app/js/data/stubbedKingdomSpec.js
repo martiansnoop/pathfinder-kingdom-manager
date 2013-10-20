@@ -1,7 +1,7 @@
 define({
   modifierSources:
     {
-      edicts: {
+      edicts2: {
         holidays: {
           label: "6 per year",
           modifiers: {
