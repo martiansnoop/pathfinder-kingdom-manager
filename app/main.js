@@ -21,23 +21,29 @@ require.config({
 define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/namespace", "text!./js/template", "./js/component", "./js/templates/namespace"],
 function($, _, Ractive, calcFactory, data, template, componentFactory, templates){
 
+  //TODO: find out why strict mode complains when I make these constants
+  var economy = "economy";
+  var stability = "stability";
+  var loyalty = "loyalty";
+  var consumption = "consumption";
 
+  var calculate = calcFactory(data.editables);
 
   var ui = new Ractive({
     el: 'placeForStuff',
     template: template,
     data: {
-//      checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)],
+      checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)],
       editables: data.editables
     }
   });
 
-//  ui.on({
-//    onChange: function(event) {
-//      //TODO: find out how to recalculate only the necessary checks
-//      ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability)]);
-//    }
-//  });
+  ui.on({
+    onChange: function(event) {
+      //TODO: find out how to recalculate only the necessary checks
+      ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability)]);
+    }
+  });
 
 
   var edictsData = {
@@ -52,20 +58,5 @@ function($, _, Ractive, calcFactory, data, template, componentFactory, templates
   edictsComponent.addListener("selectedEdictsChanged", function(event){
     var breakpoint = false;
     var newEdicts = event.context;
-  });
-
-
-  //TODO: find out why strict mode complains when I make these constants
-  var economy = "economy";
-  var stability = "stability";
-  var loyalty = "loyalty";
-  var consumption = "consumption";
-
-  var calculate = calcFactory(data.editables);
-
-  var checksData = {
-    checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)]
-  };
-
-  var checksComponent = componentFactory("checksComponent", checksData, templates.checks);
+  })
 });
