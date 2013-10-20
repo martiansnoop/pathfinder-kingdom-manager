@@ -1,11 +1,14 @@
   <div class="panel panel-default">
     <div class="panel-heading">Add New Thing</div>
     <div class="panel-body">
-      <input type="text" value="{{name}}">
+      <input type="text" class="form-control" value="{{name}}">
       <ul class="list-group">
         {{#modifiers:key}}
           <li class="list-group-item">
-            {{key}} : <input type="text" class="col-lg-4 pull-right" value="{{.}}"/>
+            <div class="row">
+              <div class="col-lg-6">{{key}}:</div>
+              <div class="col-lg-6"> <input type="text" class="form-control pull-right input-sm" value="{{.}}"/> </div>
+            </div>
           </li>
         {{/modifiers}}
       </ul>
