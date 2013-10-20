@@ -2,14 +2,14 @@ define(["../util", "underscore", "text!./newItemDialog.html", "ractive"], functi
 
   var newItemTemplate =  {
     name: "New item",
-      modifiers: {
-        economy: 0,
-        stability: 0,
-        loyalty: 0,
-        unrest: 0,
-        consumption: 0,
-        bp_cost: 0,
-        taxes: 0
+    modifiers: {
+      economy: 0,
+      stability: 0,
+      loyalty: 0,
+      unrest: 0,
+      consumption: 0,
+      bp_cost: 0,
+      taxes: 0
     }
   };
 
