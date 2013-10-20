@@ -22,10 +22,10 @@ define({
     {"name": "Park", "modifiers": {"loyalty": 1}},
     {"name": "Castle", "modifiers": {"economy": 2, "stability": 2, "loyalty": 2}}
   ], "events": [], "tileImprovements": [
-    {"name": "Gold mine", "modifiers": {"economy": 3}},
-    {"name": "Silver Mine", "modifiers": {"economy": 3}},
-    {"name": "Saw Mill", "modifiers": {"stability": 1}},
-    {"name": "Saw Mill", "modifiers": {"stability": 1}},
+    {"name": "Gold mine", "modifiers": {"economy": 3, "taxes": 2}},
+    {"name": "Silver Mine", "modifiers": {"economy": 3, "taxes": 2}},
+    {"name": "Saw Mill", "modifiers": {"stability": 1, "taxes": 1}},
+    {"name": "Saw Mill", "modifiers": {"stability": 1, "taxes": 1}},
     {"name": "Farm", "modifiers": {"consumption": -2}},
     {"name": "Farm", "modifiers": {"consumption": -2}},
     {"name": "Farm", "modifiers": {"consumption": -2}},

@@ -8,7 +8,8 @@ define(["../util", "underscore", "text!./newItemDialog.html", "ractive"], functi
         loyalty: 0,
         unrest: 0,
         consumption: 0,
-        bp_cost: 0
+        bp_cost: 0,
+        taxes: 0
     }
   };
 
@@ -50,7 +51,7 @@ define(["../util", "underscore", "text!./newItemDialog.html", "ractive"], functi
   }
 
   return function(elementId, name, onSave) {
-    var data = util.deepCopy(newItemTemplate)
+    var data = util.deepCopy(newItemTemplate);
     data.name = name || data.name;
 
     render(elementId, data, onSave);

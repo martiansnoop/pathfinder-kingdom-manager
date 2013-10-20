@@ -4,6 +4,7 @@ define(["jquery", "underscore"], function($, _) {
   var stability = "stability";
   var loyalty = "loyalty";
   var consumption = "consumption";
+  var taxes = "taxes";
 
   function sum(item, memo) {
     return item + memo;
@@ -55,18 +56,18 @@ define(["jquery", "underscore"], function($, _) {
       economy: -unrest,
       stability: -unrest,
       loyalty: -unrest
-    }
+    };
 
-    safeData.size = {}
+    safeData.size = {};
     safeData.size.hexes = size;
     safeData.size.modifiers = {
       consumption: size
-    }
+    };
 
 
-    var calculateCheck = _.partial(calculate, safeData)
+    var calculateCheck = _.partial(calculate, safeData);
 
-    return [calculateCheck(economy), calculateCheck(loyalty), calculateCheck(stability), calculateCheck(consumption)];
+    return [calculateCheck(economy), calculateCheck(loyalty), calculateCheck(stability), calculateCheck(consumption), calculateCheck(taxes)];
   }
 
 });
