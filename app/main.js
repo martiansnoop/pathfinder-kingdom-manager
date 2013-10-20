@@ -29,25 +29,15 @@ function(data, templates, components, pubsub){
   var componentList = [];
 
   var componentsToRender = [{
-      factory: components.edicts,
-      template: templates.edicts,
-      elementId: "edictsComponent"
-    },
-    {
-      factory: components.checks,
-      template: templates.checks,
-      elementId: "checksComponent"
-    },
-    {
-      factory: components.leaders,
-      template: templates.leaders,
-      elementId: "leadersComponent"
-    },
-    {
-      factory: components.buildings,
-      template: templates.buildings,
-      elementId: "buildingsComponent"
-    }];
+                            factory: components.edicts,
+                            template: templates.edicts,
+                            elementId: "edictsComponent"
+                          },
+                          {
+                            factory: components.checks,
+                            template: templates.checks,
+                            elementId: "checksComponent"
+                          }];
 
   componentsToRender.forEach(function(compDef){
     var comp = compDef.factory(bus);
@@ -56,8 +46,6 @@ function(data, templates, components, pubsub){
   });
 
   bus.publish("EdictsOverwriteRequested", {allEdicts: data.edicts, selected: data.editables.edicts});
-  bus.publish("LeadersOverwriteRequested", {leaders: data.editables.leaders});
-  bus.publish("BuildingsOverwriteRequested", {buildings: data.editables.buildings});
   bus.publish("RecalculateChecksRequested", data.editables);
 
   bus.subscribe("UserEditedData", function(data){

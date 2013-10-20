@@ -1,8 +1,6 @@
-define(["./edictsComp", "./checksComp","./leadersComp", "./buildingsComp"], function(edicts, checks, leaders, buildings){
+define(["./edictsComp", "./checksComp"], function(edicts, checks){
   return {
     edicts: edicts,
-    checks: checks,
-    leaders: leaders,
-    buildings: buildings
+    checks: checks
   }
 });
