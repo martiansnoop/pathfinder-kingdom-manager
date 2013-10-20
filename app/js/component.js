@@ -24,7 +24,7 @@ define(["ractive"], function(Ractive) {
       ui.on(listenObj);
     }
 
-    function update(keypath, data) {
+    function updateMyData(keypath, data) {
       ui.set(keypath, data)
     }
 
@@ -34,7 +34,7 @@ define(["ractive"], function(Ractive) {
     return {
       getData: exportData,
       addListener: addListener,
-      update: update
+      updateMyData: updateMyData
     }
   }
 
