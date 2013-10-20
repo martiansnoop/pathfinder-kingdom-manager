@@ -1,7 +1,6 @@
 node_modules
 bower_components
 todo
+todo.md
 app-build*
-app/js/vendor/*
-app/css/vendor/*
 

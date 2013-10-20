@@ -1,0 +1,18 @@
+  <div class="panel panel-default">
+    <div class="panel-heading">Add New Thing</div>
+    <div class="panel-body">
+      <input type="text" class="form-control" value="{{name}}">
+      <ul class="list-group">
+        {{#modifiers:key}}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-6">{{key}}:</div>
+              <div class="col-lg-6"> <input type="text" class="form-control pull-right input-sm" value="{{.}}"/> </div>
+            </div>
+          </li>
+        {{/modifiers}}
+      </ul>
+      <button type="button" class="btn btn-default" on-click="saveThenTeardown">Save</button>
+      <button type="button" class="btn btn-default" on-click="discard">Discard</button>
+    </div>
+  </div>

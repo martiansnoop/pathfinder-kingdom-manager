@@ -17,32 +17,20 @@ require.config({
   }
 });
 
-define(["jquery", "underscore", "ractive", "./js/calculate", "./js/data/data", "text!./js/template"],
-function($, _, Ractive, calcFactory, data, template){
+define(["./js/data/namespace", "./js/mainInterface/mainInterface", "./js/storageManager"],
+function(data, renderMainInterface, storageManager) {
 
-  //TODO: find out why strict mode complains when I make these constants
-  var economy = "economy";
-  var stability = "stability";
-  var loyalty = "loyalty";
-  var consumption = "consumption";
+  var staticData = {
+    edicts: data.edicts,
+    alignments: data.alignments,
+    debug: false //TODO: this isn't really static
+  };
 
-  var calculate = calcFactory(data.editables);
+  var mutableData = {
+    editables: data.editables,
+    singles: {unrest: 0, treasury: 14, size: 10}
+  };
 
-  var ui = new Ractive({
-    el: 'placeForStuff',
-    template: template,
-    data: {
-      checks: [calculate(economy), calculate(loyalty), calculate(stability), calculate(consumption)],
-      editables: data.editables,
-      edicts: data.edicts,
-      selectedHoliday: data.edicts.holidays[2]
-    }
-  });
+  renderMainInterface(staticData, storageManager.localStorage);
 
-  ui.on({
-    onChange: function(event) {
-      //TODO: find out how to recalculate only the necessary checks
-      ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability)]);
-    }
-  })
 });

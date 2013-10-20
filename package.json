@@ -1,0 +1,13 @@
+{
+  "name": "seneschal",
+  "description": "Pathfinder Kingdom Manager",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app/server.js"
+  },
+  "dependencies": {
+    "express": "~3.4.1",
+    "connect": "~2.9.2"
+  }
+}
