@@ -45,6 +45,10 @@ define(["./js/data/namespace","./js/mainInterface/mainInterface"], function(data
       } catch(error) {
         return  mutableData;
       }
+    },
+    nuke: function() {
+      delete window.localStorage["kingmakerKingdomData"];
+      delete window.localStorage["kingmakerSingleValues"];
     }
   };
 

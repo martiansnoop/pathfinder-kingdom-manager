@@ -15,6 +15,10 @@
     <label for="debug"> Debug: </label>
     <input id="debug" type="checkbox" checked="{{debug}}">
 
+    {{#debug}}
+    <button type="button" class="btn btn-default" on-click="nukeStoredData">Nuke</button>
+    {{/debug}}
+
   </div>
 
   <div class="col-lg-1">

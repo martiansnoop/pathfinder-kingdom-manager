@@ -62,6 +62,9 @@ function(Ractive, util, templates, renderNewItemDialog, calculateChecks){
       loadEditables: function(event) {
         var newMutableData = externalDataInterface.load();
         init(newMutableData, ui);
+      },
+      nukeStoredData: function(event) {
+        externalDataInterface.nuke();
       }
     });
   }
