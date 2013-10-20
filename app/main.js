@@ -23,13 +23,13 @@ function($, _, Ractive, calcFactory, data, template, componentFactory, templates
 
 
 
-//  var ui = new Ractive({
-//    el: 'placeForStuff',
-//    template: template,
-//    data: {
-//      editables: data.editables
-//    }
-//  });
+  var ui = new Ractive({
+    el: 'placeForStuff',
+    template: template,
+    data: {
+      editables: data.editables
+    }
+  });
 
 //  ui.on({
 //    onChange: function(event) {
@@ -37,12 +37,6 @@ function($, _, Ractive, calcFactory, data, template, componentFactory, templates
 //      ui.set("checks", [calculate(economy), calculate(loyalty), calculate(stability)]);
 //    }
 //  });
-
-  var buildingsData = {
-    buildings: data.editables.buildings
-  };
-  var buildingsComponent = componentFactory("buildingsComponent", buildingsData, templates.buildings);
-
   var leadershipData = {
     leaders: data.editables.leaders
   };
