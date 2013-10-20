@@ -1,10 +1,10 @@
 {
-  "name": "Scribe",
-  "version": "0.0.0",
+  "name": "Seneschal",
+  "version": "0.0.1",
   "authors": [
     "Emily Wenberg <martiansnoop@gmail.com>"
   ],
-  "main": "main.js",
+  "main": "app/main.js",
   "license": "MIT",
   "private": true,
   "ignore": [
@@ -18,7 +18,7 @@
     "jquery": "~2.0.3",
     "underscore": "~1.5.2",
     "requirejs": "~2.1.8",
-    "ractive": "~0.3.6",
+    "ractive": "~0.3.7",
     "requirejs-text": "~2.0.10",
     "bootstrap": "~3.0.0"
   }
